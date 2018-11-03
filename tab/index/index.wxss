@@ -1,0 +1,140 @@
+/* tab/index/index.wxss */
+
+swiper {
+    width: 100%;
+    height: 350rpx;
+    margin-bottom: 15rpx;
+}
+
+swiper image {
+    width: 100%;
+    height: 100%;
+}
+
+.function-area {
+    height: 220rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 15rpx;
+    background-color: #eee;
+}
+
+.function {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    align-items: center;
+    justify-content: space-around;
+    width: 370rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    color: #555;
+}
+
+.text .above {
+    font-size: 30rpx;
+    margin-bottom: 10rpx;
+}
+
+.text .below {
+    font-size: 20rpx;
+    color: #777;
+}
+
+.icon {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+
+
+/* 餐馆信息 */
+
+.restaurant-info {
+    display: flex;
+    flex-direction: column;
+    width: 730rpx;
+    margin: 0 auto;
+}
+
+.logo-row{
+    width: 100%;
+    height : 150rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 200rpx;
+    font-size: 32rpx;
+    color: #777;
+}
+.logo-row > image{
+    margin-top:15rpx;
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.row {
+    width: 100%;
+    height : 100rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    color: #777;
+}
+.divLine{
+    background: #eee;
+    width: 100%;
+    height: 5rpx;
+}
+
+.r-left-area{
+    width: 60rpx;
+}
+
+.r-left-area > image{
+    margin-top:25rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.r-middle-area{
+    width : 150rpx;
+}
+
+.r-right-area{
+    width : 450rpx;
+}
+
+.s-right-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vertical-function{
+    display: flex;
+    flex-direction: row;
+}
+
+.vertical-boundary{
+    /* background: #ff6347; */
+    background: #eee;
+    width: 5rpx;
+    height: 100%;
+}
+.s-right-area  image{
+    margin-left: 15rpx;
+    margin-top:27rpx;
+    width: 50rpx;
+    height: 50rpx;
+}

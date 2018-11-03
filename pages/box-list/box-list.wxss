@@ -1,0 +1,58 @@
+/* pages/box-reserve/box-reserve.wxss */
+
+.room{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+.buttons{
+  width : 600rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.go-to-reserve{
+  border-radius: 15rpx;
+  background-color:  #FF6347;
+  color: white;
+  margin-top: 20rpx;
+  width: 260rpx;
+  height : 70rpx;
+  line-height: 70rpx;
+  font-size: 35rpx;
+  text-align: center;
+  box-shadow: 2px 3px 8px #555;
+}
+
+.room-number{
+  margin-top: 20rpx;
+}
+
+.room-img{
+  width : 640rpx;
+  height : 320rpx;
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+}
+
+.room-description{
+  margin-top: 13rpx;
+  color: #777;
+  font-size: 30rpx;
+}
+
+.room-size{
+  margin-top: 10rpx;
+  color: #777;
+  font-size: 30rpx;
+}
+
+.boundary{
+  color: #aaa;
+  word-break:keep-all;/* 不换行 */ 
+  white-space:nowrap;/* 不换行 */ 
+  overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */ 
+}

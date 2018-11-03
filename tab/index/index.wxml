@@ -1,0 +1,109 @@
+<view>
+    <!-- 轮播图 -->
+    <view class="swiper">
+        <swiper indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" circular="true">
+            <block wx:for="{{swiper.imgUrls}}" wx:key="{{item}}">
+                <swiper-item>
+                    <image src="{{item}}" class="slide-image" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <!-- 功能按钮 -->
+    <view class="function-area">
+        <view bindtap='goToBoxReserve' class="function">
+            <view class="text">
+                <view class="above">包厢预约</view>
+                <view class="below">朋友聚会,班级聚会</view>
+            </view>
+            <view>
+                <image class="icon" src="../../img/function/bao.png"></image>
+            </view>
+        </view>
+        <view bindtap='goToBanquetReserve' class="function">
+            <view class="text">
+                <view class="above">喜宴预订</view>
+                <view class="below">婚礼,谢师宴等</view>
+            </view>
+            <view>
+                <image class="icon" src="../../img/function/xi.png"></image>
+            </view>
+        </view>
+        <view class="function">
+            <view class="text">
+                <view class="above">扫码买单</view>
+                <view class="below">提前约定</view>
+            </view>
+            <view>
+                <image class="icon" src="../../img/function/code.png"></image>
+            </view>
+        </view>
+        <view class="function">
+            <view class="text">
+                <text decode='true' class="above">会员卡&ensp;&ensp;</text>
+                <view class="below"></view>
+            </view>
+            <view>
+                <image class="icon" src="../../img/function/vip1.png"></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="restaurant-info">
+
+        <view class="logo-row">
+            <image src='../../img/logo.png'></image>
+            <view class="r-middle-area"></view>
+
+        </view>
+
+        <view class="divLine"></view>
+
+        <view class="row">
+            <view class="r-left-area">
+                <image src='../../img/schedule.png'></image>
+            </view>
+            <view class="r-middle-area">营业时间:</view>
+            <view class="r-right-area">09:00-14:30 15:00-22:00</view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="row">
+            <view class="r-left-area">
+                <image src='../../img/address.png'></image>
+            </view>
+            <view class="r-middle-area">营业地址:</view>
+            <view class="r-right-area">宣城市泾县新煮天下美食府</view>
+        </view>
+
+        <view class="divLine"></view>
+
+        <view class="row">
+            <view class="r-left-area">
+                <image src='../../img/contact.png'></image>
+            </view>
+            <view class="r-middle-area">联系我们:</view>
+            <view class="r-right-area s-right-area">
+
+                <view class="vertical-boundary"></view>
+
+                <view bindtap='goToDirector' class="vertical-function">
+                    <view>导航</view>
+                    <image src='../../img/director.png'></image>
+                </view>
+
+                <view class="vertical-boundary"></view>
+
+                <view bindtap='goToDial' class="vertical-function">
+                    <view>电话</view>
+                    <image src='../../img/phone.png'></image>
+                </view>
+                <view class="vertical-boundary"></view>
+            </view>
+
+        </view>
+        <view class="divLine"></view>
+    </view>
+
+</view>

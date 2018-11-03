@@ -1,0 +1,15 @@
+<!-- 该页面不再使用 -->
+<view class="tips">请您选择预定时间</view>
+<view>
+  <calendar 
+    active_type="circle"
+    isClick = "true"
+    active-coloro = "active-coloro"
+    datatitle-style = "datatitle-style"
+    calendar-style = "calendar-style"
+    header-style = "header-style"
+   ></calendar>
+</view>
+<view>
+  <button bindtap='goToBoxRoomList' class="next-step">下一步,填写预定信息</button>
+</view>

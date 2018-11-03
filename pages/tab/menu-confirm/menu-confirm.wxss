@@ -1,0 +1,88 @@
+page{
+    background-color: #fff;
+}
+
+/* title */
+
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 80rpx;
+    line-height: 80rpx;
+    width: 100%;
+}
+
+.title-left {
+    margin-left: 15rpx;
+    background-color: orange;
+    width: 10rpx;
+}
+
+.title-content {
+    margin-left: 20rpx;
+    font-size: 32rpx;
+}
+.divLine {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+}
+
+
+.menus {
+    position: fixed;
+    height: 92%;
+}
+
+/* 菜单信息 */
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10rpx;
+    height: 120rpx;
+    /* background-color: #efefef; */
+    background-color: #fff;
+}
+
+.menu > image {
+    width: 120rpx;
+    height: 90rpx;
+    border-radius: 10rpx;
+}
+
+.middle-area {
+    width: 250rpx;
+}
+
+
+.middle-area2 {
+    width: 100rpx;
+}
+.middle-area .title,.middle-area2 .title,.right-area {
+    font-size: 31rpx;
+    color: #333;
+}
+
+.item-quantity{
+    color: red;
+}
+
+.button {
+    position: fixed;
+    bottom: 0rpx;
+    background: #ff6347;
+    width: 100%;
+    height: 8%;
+    color: white;
+}
+
+/* 空菜单 */
+.empty-menu{
+    font-size: 31rpx;
+    margin-left: 88rpx;
+    margin-top: 25rpx;
+
+}

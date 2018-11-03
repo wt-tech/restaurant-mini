@@ -1,0 +1,17 @@
+需要改善的地方.
+1.菜单首页上滑时,让menu-header直接定位到最上面.
+
+
+bug
+1.表单验证. 必填.
+2.confirm页面 无菜单显示
+3.
+
+
+httpReq.getRequest([url,params]).then(function(success){
+
+        }).catch(function(err){
+
+        }).finally(function(){
+            
+        });

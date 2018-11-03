@@ -1,0 +1,64 @@
+<view class="form-area">
+    <view class="tips">请填写预定信息</view>
+    <view class="divLine"></view>
+    <form>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">贵宾尊姓 :</view>
+            <view class="second-child">
+                <input name="reservationsName" bindblur='nameComplete' type='text' style='width:150rpx;' 
+                    value="{{banquetReserveInfo.name}}" placeholder='请输入姓氏'></input>
+                <radio-group name="reservationsSex" bindchange="reservationSexSelect">
+                    <block wx:if="{{banquetReserveInfo.sex=='先生'}}">
+                        <radio color="red" checked value="先生">先生</radio>
+                        <radio color="red" style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                    <block wx:else>
+                        <radio color="red" value="先生">先生</radio>
+                        <radio color="red" checked style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                </radio-group>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">预定时间 :</view>
+            <view class='second-child'>
+                <view>{{banquetReserveInfo.reserveDate}}</view>
+                <picker bindchange='reserveDateChanged' name="reservationsStartTime" 
+                        mode="date" start="{{today}}">选择时间</picker>
+            </view>
+        </view>
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">预定席数 :</view>
+            <view class='second-child'>
+                <view wx:if="{{banquetReserveInfo.num}}">{{banquetReserveInfo.num}}席</view>
+                <picker bindchange='reserveQuantityChanged' name="reservationLength" 
+                        mode="selector" range="{{banquetQuantities}}">选择席数</picker>
+            </view>
+        </view>
+        <view class="divLine"></view>
+         <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">联系方式 :</view>
+            <view class='second-child'>
+                <input name="reservationsTel"  value="{{banquetReserveInfo.tel}}"  
+                        bindblur="telComplete"  placeholder='填写联系方式'></input>
+            </view>
+        </view>
+       
+        <view class="divLine"></view>
+        <view class="comment">
+            <view class="first-child">添加备注 :</view>
+            <view class='second-child'>
+                <textarea class="text-area"  value="{{banquetReserveInfo.remark}}" bindblur='remarkComplete'
+                    placeholder="在此填写备注.信息提交后,小二会主动通过电话联系您."></textarea>
+            </view>
+        </view>
+        <button class="button" bindtap='submitBtnClick'>提交</button>
+    </form>
+</view>

@@ -1,0 +1,81 @@
+.form-area {
+    position: fixed;
+    width: 750rpx;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.tips {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    text-align: center;
+    font-size: 45rpx;
+}
+
+form {
+    /* height: 1100rpx; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: space-between;
+}
+
+.flex-direction-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 30rpx;
+    color: #222;
+    height: 100rpx;
+    line-height: 100rpx;
+    justify-content: center;
+}
+
+.button {
+    position: absolute;
+    bottom: 0rpx;
+    background: #ff6347;
+    width: 100%;
+    color: white;
+}
+.star{
+    color: red;
+    text-align: center;
+}
+.first-child {
+    width: 200rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.second-child {
+    width: 440rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment {
+    margin-left: 65rpx;
+    display: flex;
+    flex-direction: row;
+    font-size: 30rpx;
+    color: #222;
+    height: 200rpx;
+}
+
+.text-area {
+    margin-top: 68rpx;
+    width: 600rpx;
+    height: 200rpx;
+    background-color: #efefef;
+}
+
+.divLine {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+}

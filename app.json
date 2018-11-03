@@ -1,0 +1,52 @@
+{
+    "pages": [
+        "tab/personal/personal",
+        "tab/index/index",
+        "tab/menu/menu",
+        "pages/box-reserve/box-reserve",
+        "pages/box-reserve-confirm/box-reserve-confirm",
+        "pages/box-reserve-form/box-reserve-form",
+        "pages/menu-list/menu-list",
+        "pages/box-list/box-list",
+        "pages/vip/vip",
+        "pages/banquet/banquet-reserve-form/banquet-reserve-form",
+        "pages/banquet/banquet-list/banquet-list",
+        "pages/banquet/banquet-detail/banquet-detail",
+        "pages/tab/menu-confirm/menu-confirm"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#FF3030",
+        "navigationBarTitleText": "新煮天下美食府",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "selectedColor": "#FF3030",
+        "list": [
+            {
+                "pagePath": "tab/index/index",
+                "text": "首页",
+                "iconPath": "img/tab/index0.png",
+                "selectedIconPath": "img/tab/index1.png"
+            },
+            {
+                "pagePath": "tab/menu/menu",
+                "text": "菜单",
+                "iconPath": "img/tab/menu0.png",
+                "selectedIconPath": "img/tab/menu1.png"
+            },
+            {
+                "pagePath": "tab/personal/personal",
+                "text": "我的订单",
+                "iconPath": "img/tab/order0.png",
+                "selectedIconPath": "img/tab/order1.png"
+            }
+        ]
+    },
+    "plugins": {
+        "calendar": {
+            "version": "1.1.1",
+            "provider": "wx23a9cef3522e4f7c"
+        }
+    }
+}

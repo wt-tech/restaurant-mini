@@ -1,0 +1,32 @@
+
+.tips{
+  font-size: 35rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  color : red;
+}
+
+.next-step{
+  width: 600rpx;
+  background-color: #FF6347;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+
+
+.calendar-style{
+  height: 900rpx;
+}
+
+
+
+.active-coloro {
+  color: #fff;
+  background: red;
+}
+
+.datatitle-style{
+  color : purple;
+}

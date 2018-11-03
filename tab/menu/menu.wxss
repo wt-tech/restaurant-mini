@@ -1,0 +1,135 @@
+/* 菜单分类 */
+.total-page{
+    display: flex;
+    flex-direction: column;
+}
+.button {
+    position: absolute;
+    bottom: 0rpx;
+    background: #ff6347;
+    width: 600rpx;
+    height: 8%;
+    color: white;
+}
+.total-menu-area {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.menuHeader {
+    height: 100%;
+    width: 150rpx;
+    background-color: #eee;
+}
+
+.menuHeader-item {
+    color: #555;
+    font-size: 30rpx;
+    height: 150rpx;
+    text-align: center;
+    line-height: 150rpx;
+}
+
+.menuHeader .active {
+    background: #fff;
+    position: relative;
+}
+
+.divLine {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+}
+
+/* 菜单列表 */
+.right-scroll-view{
+    width: 600rpx;
+}
+
+.menus {
+    height: 100%;
+    white-space: nowrap;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 10rpx;
+    height: 210rpx;
+}
+
+.menu > image {
+    width: 190rpx;
+    height: 150rpx;
+    border-radius: 10rpx;
+}
+
+.middle-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 150rpx;
+    /* width: 260rpx; */
+    width: 210rpx;
+    margin-left: 5rpx;
+}
+
+.middle-area .title {
+    font-size: 31rpx;
+    /* font-weight: bold; */
+}
+
+.middle-area .discount-price {
+    font-size: 35rpx;
+    color: red;
+}
+
+.middle-area .sales-volume {
+    font-size: 25rpx;
+    color: #777;
+}
+
+.right-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 150rpx;
+    width: 160rpx;
+}
+
+.btn-size {
+    width: 120rpx;
+    height: 60rpx;
+    font-size: 30rpx;
+    line-height: 60rpx;
+    padding: 0 5rpx;
+    background-color: #fff;
+    color: #ff3030;
+    border: 1rpx solid #ff3030;
+    border-radius: 20rpx;
+}
+
+.operation {
+    width: 135rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.operation image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+
+
+
+

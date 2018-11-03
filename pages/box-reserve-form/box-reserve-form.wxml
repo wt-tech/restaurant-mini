@@ -1,0 +1,85 @@
+<view class="form-area">
+    <view class="tips">请填写预定信息</view>
+    <view class="divLine"></view>
+    <form bindsubmit="reserveSubmit">
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">贵宾尊姓 :</view>
+            <view class="second-child">
+                <input bindblur="nameComplete" name="reservationsName" value="{{boxReserveInfo.name}}" 
+                    type='text' style='width:150rpx;' placeholder='请输入姓氏'></input>
+                <radio-group bindchange="reservationSexSelect" name="reservationsSex">
+                    <block wx:if="{{boxReserveInfo.sex=='先生'}}">
+                        <radio color="red" checked value="先生">先生</radio>
+                        <radio color="red" style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                    <block wx:else>
+                        <radio color="red" value="先生">先生</radio>
+                        <radio color="red" checked style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                </radio-group>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star" style='color : white;'>*</view>
+            <view class="first-child">预定时间 :</view>
+            <view class='second-child'>
+                <view>{{boxReserveInfo.reservationType}}</view>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">就餐人数 :</view>
+            <view class='second-child'>
+                <view wx:if="{{boxReserveInfo.num}}">{{boxReserveInfo.num}}人</view>
+                <picker bindchange='numSelect' name="reservationLength" mode="selector" 
+                        range="{{population}}">选择就餐人数</picker>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+         <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">联系方式 :</view>
+            <view class='second-child'>
+                <input bindblur="telComplete" name="reservationsTel" maxlength='11' 
+                       value="{{boxReserveInfo.tel}}" placeholder='填写联系方式'></input>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">点菜模式 :</view>
+            <view class='second-child'>
+                <radio-group bindchange="reservationsModeSelect" name="reservationsMode">
+                 <block wx:if="{{boxReserveInfo.reservationsMode === '提前选择菜品'}}">
+                    <radio color="red" value="只订座" >到店点菜</radio>
+                    <radio color="red" style='margin-left:50rpx;'value="提前选择菜品" checked>现在点菜</radio>
+                 </block>
+                 <block wx:else>
+                    <radio color="red" value="只订座" checked>到店点菜</radio>
+                    <radio color="red" style='margin-left:50rpx;'value="提前选择菜品" >现在点菜</radio>
+                 </block>
+                   
+                </radio-group>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="comment">
+            <view class="first-child">添加备注 :</view>
+            <view class='second-child'>
+                <textarea bindblur='remarkComplete' class="text-area" placeholder="在此填写备注"
+                value="{{boxReserveInfo.remark}}" ></textarea>
+            </view>
+        </view>
+        <button wx:if="{{boxReserveInfo.reservationsMode === '只订座'}}" 
+            class="button" bindtap="goToConfirm">下一步</button>
+        <button wx:else bindtap='goToMenuList' class="button">前去点菜</button>
+    </form>
+</view>

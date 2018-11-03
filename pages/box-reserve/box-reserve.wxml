@@ -1,0 +1,32 @@
+<!--pages/box-reserve/box-reserve.wxml-->
+<view class="future-reserve-area" hidden='true'>
+  <view class="reserve-header-area">{{calendar.header}}</view>
+  <view  class="week-area" >
+    <view class="cell week" wx:for="{{calendar.weekRow}}" wx:key="*this">{{item}}</view>
+  </view>
+  <view class="date-area" >
+     <view  class="date-row" wx:for="{{calendar.dateList}}" wx:for-item="week" wx:key="">
+      <view wx:for="{{week}}" wx:key="">
+        <view class="cell">{{item}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="tips">请您选择预定日期</view>
+<view>
+  <calendar 
+    active_type="circle"
+    isClick = "true"
+    active-coloro = "active-coloro"
+    datatitle-style = "datatitle-style"
+    calendar-style = "calendar-style"
+    header-style = "header-style"
+    bindselectDate = "bindselectDate"
+    selectedDate = "{{selectedDate}}"
+   ></calendar>
+</view>
+<view>
+  <button bindtap='goToBoxRoomList' class="next-step">下一步,选择包厢</button>
+</view>

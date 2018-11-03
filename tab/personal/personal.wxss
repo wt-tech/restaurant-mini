@@ -1,0 +1,97 @@
+/* avatar */
+.bg-area{
+    background: #FF3030;
+}
+.btn{
+    background: orange;
+    font-size: 30rpx;
+}
+.avatar{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 75rpx;
+    margin: 0 auto;
+    display: flex;
+}
+.nickname{
+    text-align: center;
+    width: 750rpx;
+    color: white;
+    margin-top: 20rpx;
+    height: 70rpx;
+}
+
+/* title */
+
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 80rpx;
+    line-height: 80rpx;
+    width: 100%;
+}
+
+.title .open{
+    width: 50rpx;
+    height: 50rpx;
+    margin-top : 20rpx;
+}
+
+
+.title-left {
+    margin-left: 15rpx;
+    background-color: orange;
+    width: 10rpx;
+}
+
+.title-content {
+    margin-left: 20rpx;
+    font-size: 32rpx;
+}
+
+.title-tips {
+    margin-left: 20rpx;
+    color: #555;
+    font-size: 29rpx;
+}
+
+.new-tips{
+    margin-left: 20rpx;
+    color: red;
+    font-size: 29rpx;
+}
+
+
+.divLine {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+}
+
+/* banquet */
+
+.reserve-item {
+    float: right;
+    width: 700rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 40rpx;
+    margin-top: 15rpx;
+    margin-right: 70rpx;
+}
+
+.subDivLine {
+    float: right;
+    width: 700rpx;
+    background: #e0e3da;
+    height: 3rpx;
+}

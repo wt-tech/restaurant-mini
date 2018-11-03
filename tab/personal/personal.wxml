@@ -1,0 +1,67 @@
+<view class="bg-area">
+    <block wx:if="{{userInfo.buttonShow}}">
+        <button class="avatar btn" open-type='getUserInfo' bindgetuserinfo="getUserInfo">点击获取头像</button>
+        <view class="nickname"></view>
+    </block>
+
+    <block wx:else>
+        <image class="avatar" src='{{userInfo.url}}'></image>
+        <view class="nickname">{{userInfo.nickName}}</view>
+    </block>
+</view>
+
+<view class="title">
+    <view class="title-left"></view>
+    <view class="title-content">我的预定</view>
+    <view class="title-tips">Personal Reservations</view>
+    <image style='margin-left:210rpx;' class="open" src='../../img/open.png'></image>
+</view>
+<view class="divLine"></view>
+
+<!-- 隐藏域 -->
+<view hidden="{{!showReservations}}">
+
+    <view class="banquet">
+        <view wx:for="{{banquetReserveList}}" wx:key="id">
+            <view class="reserve-item">
+                <image class="icon" src="../../img/function/xi.png"></image>
+                <view>喜宴预订 : {{item.reservationsStartTime}}</view>
+            </view>
+            <view class="subDivLine"></view>
+        </view>
+    </view>
+    <view class="box">
+        <view wx:for="{{boxReserveList}}" wx:key="id">
+            <view class="reserve-item">
+                <image class="icon" src="../../img/function/bao.png"></image>
+                <view>包厢预定 : {{item.reservationsStartTime}}</view>
+            </view>
+            <view class="subDivLine"></view>
+        </view>
+    </view>
+
+</view>
+
+<view class="title">
+    <view class="title-left"></view>
+    <view class="title-content">我的订单</view>
+    <view class="title-tips">Personal Orders</view>
+    <image style='margin-left:290rpx;' class="open" src='../../img/open.png'></image>
+</view>
+<view class="divLine"></view>
+<view class="orders" hidden="{{!showOrders}}">
+    <view wx:for="{{menuOrderList}}" wx:key="id">
+        <view class="reserve-item">
+            <image class="icon" src="../../img/function/food.png"></image>
+            <view>{{item.createTime}}</view>
+        </view>
+        <view class="subDivLine"></view>
+    </view>
+</view>
+
+<view class="title">
+    <view class="title-left"></view>
+    <view class="title-content">商家入口</view>
+    <view class="new-tips">有新订单!</view>
+</view>
+<view class="divLine"></view>

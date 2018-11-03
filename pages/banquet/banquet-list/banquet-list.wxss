@@ -1,0 +1,134 @@
+/* pages/box-reserve/box-reserve.wxss */
+
+/* 店内一览 */
+.two-image{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10rpx;
+
+}
+.two-image > image{
+    width: 360rpx;
+    height: 200rpx;
+    margin-bottom: 10rpx;
+    border-radius: 20rpx;
+}
+
+
+
+/* title */
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 80rpx;
+    line-height: 80rpx;
+    width: 100%;
+}
+
+.title-left {
+    margin-left: 15rpx;
+    background-color: orange;
+    width: 10rpx;
+}
+
+.title-content {
+    margin-left: 20rpx;
+    font-size: 32rpx;
+}
+
+.title-tips {
+    margin-left: 20rpx;
+    color: #555;
+    font-size: 25rpx;
+}
+
+/* 分界线 */
+.boundary {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+    margin-top: 30rpx;
+}
+
+.divLine {
+    background: #e0e3da;
+    width: 120%;
+    height: 5rpx;
+}
+
+
+
+/* 喜宴预订 */
+.banquet {
+    width: 730rpx;
+    margin: 10rpx auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background-color: #fff;
+    border: 2rpx solid #ddd;
+    border-radius: 20rpx;
+}
+
+.buttons {
+    width: 600rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin-bottom: 20rpx;
+}
+
+.go-to-reserve {
+    border-radius: 15rpx;
+    border : 1px solid #555;
+    color: #333;
+    margin-top: 20rpx;
+    width: 240rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 35rpx;
+    text-align: center;
+    box-shadow: 2px 3px 8px #555;
+}
+
+.banquet-name {
+    margin-top: 10rpx;
+}
+
+.banquet-img {
+    width: 700rpx;
+    height: 380rpx;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+}
+
+.banquet-description {
+    margin-top: 13rpx;
+    color: #777;
+    font-size: 30rpx;
+}
+
+.banquet-price {
+    margin-top: 10rpx;
+    color: #777;
+    font-size: 30rpx;
+}
+
+.boundary {
+    color: #aaa;
+    word-break: keep-all;
+    white-space: nowrap; 
+    overflow: hidden; 
+}
+
+
+/* 优惠活动 */
+
+.activity-imgs > image{
+    border-radius: 20rpx;
+    width: 720rpx;
+    margin-top: 10rpx;
+    margin-left: 15rpx;
+}

@@ -1,0 +1,55 @@
+<view class="restaurant-info">
+    <view class="divLine"></view>
+    <view class="title">
+        <view class="title-left"></view>
+        <view class="title-content">大厅一览</view>
+        <view class="title-tips">Inside Views</view>
+    </view>
+    <view class="divLine"></view>
+
+    <view class="two-image">
+        <image bindtap='previewRestaurantImg' data-index="0" src='{{restaurantImgs[0]}}'></image>
+        <image bindtap='previewRestaurantImg' data-index="1" src='{{restaurantImgs[1]}}'></image>
+        <image bindtap='previewRestaurantImg' data-index="2" src='{{restaurantImgs[2]}}'></image>
+        <image bindtap='previewRestaurantImg' data-index="3" src='{{restaurantImgs[3]}}'></image>
+    </view>
+
+    <view class="divLine"></view>
+</view>
+
+<view class="all-banquets">
+    <view class="title">
+        <view class="title-left"></view>
+        <view class="title-content">喜宴套餐</view>
+        <view class="title-tips">Banquet Activity</view>
+    </view>
+    <view class="divLine"></view>
+    <view class="banquets">
+        <view class="banquet" wx:for="{{banquetList}}" wx:for-item="banquet" wx:key="id">
+            <image bindtap='previewImage' data-url="{{banquet.imgURLs[0]}}" class="banquet-img" src="{{banquet.imgURLs[0]}}"></image>
+            <view class="banquet-name">{{banquet.banquetName}}套餐</view>
+            <view class="banquet-description">{{banquet.banquetDescription}}</view>
+            <view class="banquet-price">价格:{{banquet.banquetPrice}}元/桌</view>
+            <view class="buttons">
+                <view bindtap='goToBanquetDetail' class="go-to-reserve">查看详情</view>
+                <view bindtap='goToBanquetReserveForm' data-price="{{banquet.banquetPrice}}" 
+                    data-id="{{banquet.id}}" class="go-to-reserve">立即预定</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="discount-activity">
+    <view class="divLine"></view>
+    <view class="title">
+        <view class="title-left"></view>
+        <view class="title-content">优惠活动</view>
+        <view class="title-tips">Promotion Activity</view>
+    </view>
+    <view class="divLine"></view>
+
+    <view class="activity-imgs" wx:for="{{activityImgs}}" wx:for-item="url" wx:key="*this">
+        <image binderror="activityImageLoadError" src="{{url}}" mode='widthFix'></image>
+    </view>
+
+</view>

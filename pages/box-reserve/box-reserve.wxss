@@ -1,0 +1,77 @@
+.future-reserve-area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 750rpx;
+  height: 1000rpx;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.reserve-header-area{
+  color: red;
+  height: 200rpx;
+}
+
+.week-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.date-area{
+  display: flex;
+  flex-direction: column;
+}
+
+.date-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.cell{
+  width: 100rpx;
+  height: 80rpx;
+  color: #333;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.week{
+    color: #777;
+    font-weight: bold;
+}
+
+.tips{
+  font-size: 35rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  color : red;
+}
+
+.next-step{
+  width: 600rpx;
+  background-color: #FF6347;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+
+.calendar-style{
+  height: 900rpx;
+}
+
+
+
+.active-coloro {
+  color: #fff;
+  background: red;
+}
+
+.datatitle-style{
+  color : purple;
+}
+
+
+
