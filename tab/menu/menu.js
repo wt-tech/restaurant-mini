@@ -4,10 +4,17 @@ Page({
     data: {
         currentSelectId: null,
         menuHeaders: [],
-        menus: []
+        menus: [],
+        tableId : null,
     },
 
     onLoad: function(options) {
+        let tableId = options.tableId;
+        if(tableId){//若是通过桌上二维码扫描进来.
+            this.setData({
+                tableId: tableId
+            });
+        }
         this.initMenuClassification();
     },
 
@@ -187,10 +194,19 @@ Page({
 
     },
 
-    goToBoxReserveConfirm: function() {
+    goToTableReserve : function(){
         this.storeMenusToAppMemory();
         wx.navigateTo({
-            url: '../../pages/tab/menu-confirm/menu-confirm',
+            url: '../../pages/tab/table-reserve-form/table-reserve-form'
+        })
+    },
+
+
+    goToOrderConfirm: function() {
+        this.storeMenusToAppMemory();
+        let tableId = this.data.tableId;
+        wx.navigateTo({
+            url: '../../pages/tab/menu-confirm/menu-confirm?tableId=' + tableId
         })
     }
 

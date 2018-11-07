@@ -32,7 +32,10 @@
 
             </scroll-view>
             <view>
-                <button bindtap='goToBoxReserveConfirm' class="button">下一步</button>
+                <!-- 通过小程序进来,没有携带桌子id -->
+                <button hidden="{{!!tableId}}" bindtap='goToTableReserve' class="button">下一步</button>
+                <!-- 通过扫桌面上二维码进来 -->
+                <button hidden="{{!tableId}}" bindtap='goToOrderConfirm' class="button">下一步</button>
             </view>
         </view>
     </view>

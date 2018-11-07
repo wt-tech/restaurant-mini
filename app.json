@@ -1,7 +1,10 @@
 {
     "pages": [
-        "tab/personal/personal",
+        "pages/tab/new-reservation-list/new-reservation-list",
         "tab/index/index",
+        "tab/personal/personal",
+        "pages/tab/table-reserve-confirm/table-reserve-confirm",
+        "pages/tab/table-reserve-form/table-reserve-form",
         "tab/menu/menu",
         "pages/box-reserve/box-reserve",
         "pages/box-reserve-confirm/box-reserve-confirm",

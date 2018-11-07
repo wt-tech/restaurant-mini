@@ -6,7 +6,22 @@ import constant from './constant.js'
 
 var baseURL = constant.baseURL;
 
-
+/**
+ * 这里只保存jsessionid,其他的cookie不管.
+ */
+function saveJSESSIONID2AppGlobalData(httpResponseInfo){
+    if (getApp().globalData[constant.sessionID] == null){
+        let cookie = httpResponseInfo.header['Set-Cookie'];
+        let regex = /(?:JSESSIONID)([\d\D]*?)(?=;)/;
+        try{
+            let arr = regex.exec(cookie);
+            if (arr.length > 0)
+                getApp().globalData[constant.sessionID] = arr[0];
+        }catch(exception){
+            console.log(exception);
+        }
+    }
+}
 
 /*
 params是一个对象,该对象的每一个属性均需要传递到后台,
@@ -52,6 +67,7 @@ function removeNullAndUndefinedParamsRec(params) {
 url只写资源位置,Context及之前的都不用写
 */
 function postRequest([url, params]) {
+    
     if (params == null)
         return;
     const promise = new Promise(function(resolved, reject) {
@@ -60,13 +76,15 @@ function postRequest([url, params]) {
             method: 'POST',
             data: removeNullAndUndefinedParams(params), //这里没有使用递归处理参数,如果有需要,再写一个工具方法即可
             header: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Cookie': getApp().globalData[constant.sessionID]
             },
             success: (res) => {
                 if (res.statusCode === 200)
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -89,13 +107,15 @@ function deleteRequest([url, params]) {
             method: 'POST',
             data: removeNullAndUndefinedParams(params), //这里没有使用递归处理参数,如果有需要,再写一个工具方法即可
             header: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Cookie': getApp().globalData[constant.sessionID]
             },
             success: (res) => {
                 if (res.statusCode === 200)
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -119,13 +139,15 @@ function putRequest([url, params]) {
             method: 'POST',
             data: removeNullAndUndefinedParams(params), //这里没有使用递归处理参数,如果有需要,再写一个工具方法即可
             header: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Cookie': getApp().globalData[constant.sessionID]
             },
             success: (res) => {
                 if (res.statusCode === 200)
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -146,11 +168,15 @@ function getRequest([url, params = null]) {
             url: urlFactory(url),
             method: 'GET',
             data: removeNullAndUndefinedParams(params), //这里没有使用递归处理参数,如果有需要,再写一个工具方法即可
+            header: {
+                'Cookie': getApp().globalData[constant.sessionID]
+            },
             success: (res) => {
                 if (res.statusCode === 200)
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -165,15 +191,20 @@ function getRequest([url, params = null]) {
 
 /*完全等价于getRequest([url,null]),即用来发送没有参数的get请求*/
 function simpleRequest([url]) {
+    
     const promise = new Promise(function(resolved, reject) {
         wx.request({
             url: urlFactory(url),
-            method: 'GET',
+            method: 'GET', 
+            header: {
+                'Cookie': getApp().globalData[constant.sessionID]
+            },
             success: (res) => {
                 if (res.statusCode === 200)
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -201,7 +232,8 @@ function fileUpload([url, filePath, name, formData = null]) {
             url: urlFactory(url),
             filePath: filePath,
             header: {
-                'content-type': 'multipart/form-data'
+                'content-type': 'multipart/form-data',
+                'Cookie': getApp().globalData[constant.sessionID]
             },
             name: name,
             formData: removeNullAndUndefinedParams(formData), //这里没有使用递归处理参数,如果有需要,再写一个工具方法即可
@@ -210,6 +242,7 @@ function fileUpload([url, filePath, name, formData = null]) {
                     resolved(JSON.parse(res.data)) //这里res.data是字符串,不是js对象,和request请求返回的结果不同,感觉这是一个坑
                 else
                     reject(res);
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => {
 
@@ -233,7 +266,8 @@ function postRequestWithJSONSchema([url, params = null]) {
             //   data: removeNullAndUndefinedParamsRec(params),
             data: params,
             header: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Cookie': getApp().globalData[constant.sessionID]
             },
             dataType: 'json',
             success: (res) => {
@@ -241,6 +275,7 @@ function postRequestWithJSONSchema([url, params = null]) {
                     resolved(res.data); //成功时,这里只返回数据,状态码没有返回
                 else
                     reject(res); //失败时,返回res包括httpStatusCode
+                saveJSESSIONID2AppGlobalData(res);
             },
             fail: (res) => { //请求失败,一般应该是网络原因
 
@@ -359,5 +394,6 @@ module.exports = {
     postRequestWithJSONSchema: postRequestWithJSONSchema,
     fileUpload: fileUpload,
     formatTime: formatTime,
-    getUserInfo: getUserInfo
+    getUserInfo: getUserInfo,
+    urlFactory: urlFactory
 }

@@ -14,6 +14,8 @@ function getCustomerIdFromBackEnd(code){
     });
 }
 
+
+
 function saveCustomerIdToStorage(id){
     wx.setStorageSync(constant.customerId,id);
 }

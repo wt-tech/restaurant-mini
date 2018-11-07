@@ -1,0 +1,67 @@
+<view class="form-area">
+    <view class="tips">请填写预定信息</view>
+    <view class="divLine"></view>
+    <form bindsubmit="reserveSubmit">
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">贵宾尊姓 :</view>
+            <view class="second-child">
+                <input bindblur="nameComplete" name="reservationsName" value="{{tableReserveInfo.name}}" 
+                    type='text' style='width:150rpx;' placeholder='请输入姓氏'></input>
+                <radio-group bindchange="reservationSexSelect" name="reservationsSex">
+                    <block wx:if="{{tableReserveInfo.sex=='先生'}}">
+                        <radio color="red" checked value="先生">先生</radio>
+                        <radio color="red" style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                    <block wx:else>
+                        <radio color="red" value="先生">先生</radio>
+                        <radio color="red" checked style='margin-left:10rpx;' value="女士">女士</radio>
+                    </block>
+                </radio-group>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">到店时间 :</view>
+            <view class='second-child'>
+                <view hidden="{{!tableReserveInfo.reservationsStartTime}}">{{tableReserveInfo.reservationsStartTime}}</view>
+                <picker start="{{now}}" bindchange='timeSelect' mode="time">点击选择时间</picker>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+        <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">就餐人数 :</view>
+            <view class='second-child'>
+                <view wx:if="{{tableReserveInfo.num}}">{{tableReserveInfo.num}}人</view>
+                <picker bindchange='numSelect' name="reservationLength" mode="selector" 
+                        range="{{population}}">选择就餐人数</picker>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+         <view class="flex-direction-row">
+            <view class="star">*</view>
+            <view class="first-child">联系方式 :</view>
+            <view class='second-child'>
+                <input bindblur="telComplete" name="reservationsTel" maxlength='11' 
+                       value="{{tableReserveInfo.tel}}" placeholder='填写联系方式'></input>
+            </view>
+        </view>
+
+        <view class="divLine"></view>
+ 
+
+        <view class="comment">
+            <view class="first-child">添加备注 :</view>
+            <view class='second-child'>
+                <textarea bindblur='remarkComplete' class="text-area" placeholder="在此填写备注"
+                value="{{tableReserveInfo.remark}}" ></textarea>
+            </view>
+        </view>
+        <button class="button" bindtap="goToConfirm">下一步</button>
+    </form>
+</view>

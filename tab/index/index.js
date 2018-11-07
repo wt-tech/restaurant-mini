@@ -1,4 +1,4 @@
-// tab/index/index.js
+import httpReq from '../../utils/request.js';
 Page({
     data: {
         swiper: {
@@ -16,8 +16,51 @@ Page({
     },
 
     onLoad: function(options) {
-
+        //this.initSwiper();
     },
+
+    initSwiper : function(){
+        let that = this;
+        let url = 'banner/listbanner';
+        httpReq.simpleRequest([url]).then(function(success){
+            if(success.status==='success')
+                that.processBannerData(success.banners);
+            else{
+                wx.showToast({
+                    title: '轮播图获取失败',
+                    icon : 'none'
+                })
+            }
+        }).catch(function(error){
+            wx.showToast({
+                title: '轮播图获取失败',
+                icon: 'none'
+            })
+        }).finally(function(){
+
+        });
+    },
+
+    processBannerData : function(banners){
+        if(Array.isArray(banners)){
+            let imgUrls = [];
+            banners.reduce(function(accumulator,banner,index){
+                accumulator.push(banner.url);
+                return accumulator;
+            },imgUrls);
+
+            this.setData({
+                swiper : {
+                    imgUrls: imgUrls,
+                    indicatorDots: false,
+                    autoplay: true,
+                    interval: 3000,
+                    duration: 1000
+                }
+            });
+        }
+    },
+
 
     goToBoxReserve: function() {
         wx.navigateTo({

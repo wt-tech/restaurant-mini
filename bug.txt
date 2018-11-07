@@ -5,13 +5,7 @@
 bug
 1.表单验证. 必填.
 2.confirm页面 无菜单显示
-3.
+3.listreservebycustomerid?customerId 响应太慢
+4.listnullbox 响应太慢
 
 
-httpReq.getRequest([url,params]).then(function(success){
-
-        }).catch(function(err){
-
-        }).finally(function(){
-            
-        });

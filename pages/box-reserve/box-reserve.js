@@ -34,7 +34,7 @@ Page({
     checkDateReasonable : function(){
         let app = getApp();
         let selectedDate = app.boxReserveInfo.reserveTime;
-        let today = util.formatTime(new Date);
+        let today = util.formatDate(new Date);
         console.log(selectedDate,today);
         return new Date(selectedDate) >= new Date(today);
     },

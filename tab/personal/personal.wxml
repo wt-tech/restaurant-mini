@@ -10,11 +10,12 @@
     </block>
 </view>
 
-<view class="title">
+<view bindtap='showReservations' class="title">
     <view class="title-left"></view>
     <view class="title-content">我的预定</view>
     <view class="title-tips">Personal Reservations</view>
-    <image style='margin-left:210rpx;' class="open" src='../../img/open.png'></image>
+    <view  class="title-image"><image class="open" src='../../img/open.png'></image></view>
+    
 </view>
 <view class="divLine"></view>
 
@@ -42,11 +43,11 @@
 
 </view>
 
-<view class="title">
+<view bindtap='showOrders' class="title">
     <view class="title-left"></view>
     <view class="title-content">我的订单</view>
     <view class="title-tips">Personal Orders</view>
-    <image style='margin-left:290rpx;' class="open" src='../../img/open.png'></image>
+    <view class="title-image"><image class="open" src='../../img/open.png'></image></view>
 </view>
 <view class="divLine"></view>
 <view class="orders" hidden="{{!showOrders}}">
@@ -59,9 +60,9 @@
     </view>
 </view>
 
-<view class="title">
+<view wx:if="{{showMerchantsEntrance}}" bindtap='newReservations' class="title">
     <view class="title-left"></view>
     <view class="title-content">商家入口</view>
-    <view class="new-tips">有新订单!</view>
+    <view hidden='{{manager.numbersOfNotify == 0}}' class="new-tips">有{{manager.numbersOfNotify}}个新订单!</view>
 </view>
-<view class="divLine"></view>
+<view wx:if="{{showMerchantsEntrance}}" class="divLine"></view>

@@ -18,6 +18,7 @@
     width: 750rpx;
     color: white;
     margin-top: 20rpx;
+
     height: 70rpx;
 }
 
@@ -31,13 +32,6 @@
     width: 100%;
 }
 
-.title .open{
-    width: 50rpx;
-    height: 50rpx;
-    margin-top : 20rpx;
-}
-
-
 .title-left {
     margin-left: 15rpx;
     background-color: orange;
@@ -47,12 +41,26 @@
 .title-content {
     margin-left: 20rpx;
     font-size: 32rpx;
+    width: 150rpx;
 }
 
 .title-tips {
     margin-left: 20rpx;
     color: #555;
     font-size: 29rpx;
+    width: 300rpx;
+}
+
+.title-image {
+    width: 235rpx;
+}
+
+.title-image .open{
+    width: 50rpx;
+    height: 50rpx;
+    margin-top : 20rpx;
+    margin-right: 10rpx;
+    float: right;
 }
 
 .new-tips{

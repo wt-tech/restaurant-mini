@@ -1,0 +1,72 @@
+<scroll-view scroll-y class="menus">
+    <view class="title">
+        <view class="title-left"></view>
+        <view class="title-content">基本信息</view>
+    </view>
+    <view class="divLine"></view>
+
+    <view calss="reserve-info">
+        <view class="row">
+            <view>预订人:</view>
+            <view>{{reserveInfo.reservationsName}}</view>
+        </view>
+
+        <view class="row">
+            <view>预订时间:</view>
+            <view>{{reserveInfo.reservationsStartTime}}</view>
+        </view>
+
+        <view class="row">
+            <view>预订人数:</view>
+            <view>{{reserveInfo.reservationsNum}}人</view>
+        </view>
+
+        <!-- <view class="row">
+            <view>预订包厢:</view>
+            <view>{{reserveInfo.box[0].roomName}}</view>
+        </view> -->
+
+        <view class="row">
+            <view>联系方式:</view>
+            <view>{{reserveInfo.reservationsTel}}</view>
+        </view>
+
+        <view class="row">
+            <view class="remark-info">备注信息:</view>
+            <view class="remark-info">
+                <textarea disabled='true' value='{{reserveInfo.remarks}}'></textarea>
+            </view>
+        </view>
+        <view class="divLine"></view>
+    </view>
+
+    
+    <view class="title">
+        <view class="title-left"></view>
+        <view class="title-content">菜品信息</view>
+    </view>
+    <view class="divLine"></view>
+    
+
+    <view wx:if="{{menus.length > 0}}" class="menu-info">
+        <view wx:for="{{menus}}" wx:for-item="menu" wx:key="menu.id" class="menu">
+            <image class="food-img" src="../../img/menu/gbxq.jpg"></image>
+            <view class="middle-area">
+                <view class="title">{{menu.name}}</view>
+            </view>
+            <view class="middle-area2">
+                <view wx:if="{{menu.sizeList.length > 1}}" class="title">{{menu.selectedSize.value}}</view>
+            </view>
+            <view class="right-area">
+                <text>¥{{menu.selectedSize.price}} * </text>
+                <text class="item-quantity">{{menu.count}} </text>
+            </view>
+        </view>
+    </view>
+    <view wx:else class="empty-menu">
+        无
+    </view>
+</scroll-view>
+<view>
+    <button class="button" bindtap='reserveSubmit'>确认无误,提交</button>
+</view>

@@ -1,7 +1,5 @@
 <scroll-view scroll-y class="menus">
 
-
-
     <view class="title">
         <view class="title-left"></view>
         <view class="title-content">菜品信息</view>
