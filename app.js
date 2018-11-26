@@ -5,41 +5,27 @@ import customerUtil from './utils/customer.js';
 import httpReq from './utils/request.js';
 App({
     onLaunch: function() {
-        this.initLotteryInfo();
+        this.initManagerList();
         this.addFinallyToPromise();
-        // this.initManagerList();
         this.initCustomerId();
     },
 
     initManagerList : function(){//作用就是为了initWebsocket
-       
         let that = this;
-        // that._initManagerList();
         setTimeout(that._initManagerList, 1000);
+        //这里延迟一秒钟是等待小程序完成初始化.让getApp()能够返回小程序,而非返回undefined
     },
 
     _initManagerList: function () {//作用就是为了initWebsocket
         let that = this;
         let url = "customer/manager";
         httpReq.simpleRequest([url]).then(function (res) {
-            console.log(res);
-            if(res.status === 'fail')
-                return;
             let list = res.managerList;
             if (list.indexOf(customerUtil.getCustomerIdFromStorage()) != -1) {
-                //可以在这里写一个登录.把超级管理员账号密码发送到服务器.
-                let params = {
-                    userCode: constant.userCode,
-                    userPassword : constant.pwd
-                };
-                httpReq.postRequestWithJSONSchema(['login',params]).then(function(res){
-                    if (res.status === 'fail')
-                        return;
-                    that.initWebSocket();
-                    that.globalData.showMerchantsEntrance = true;
-                }).catch(function(res){
-                    console.log();
-                })
+                console.log(customerUtil.getCustomerIdFromStorage());
+                console.log(res);
+                that.initWebSocket();
+                that.globalData.showMerchantsEntrance = true;
             }
         }).catch(function (res) {
             console.log(res);
@@ -55,12 +41,11 @@ App({
     },
 
     createSocket : function(){
-        let that = this;
         return wx.connectSocket({
             url: constant.ws_baseURL + 'notifyHandler',
             header: {
                 'content-type': 'application/json',
-                'Cookie': that.globalData[constant.sessionID]
+                'Cookie': getApp().globalData[constant.sessionID]
             }
         });
     },
@@ -76,7 +61,7 @@ App({
                let notifyType = JSON.parse(message.data);
                if (notifyType.type) {
                    this.globalData.newNotifyInfo.newNotify(notifyType);
-                //    this.playVoice();
+                   this.playVoice();
                }
            }catch(e){
                console.log(e);
@@ -87,25 +72,15 @@ App({
     playVoice : function(){
         const manager = wx.createInnerAudioContext();
         manager.src = constant.notifyMP3URL;
-        console.log(manager.src);
         manager.play();
     },
 
-    initLotteryInfo : function(){
-        console.log(constant.restLotteryTime);
-        let restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
-        if (restLotteryTimes == null || restLotteryTimes == 'undefined' || restLotteryTimes == ''){
-            wx.setStorageSync(constant.restLotteryTime,1);
-        }
-        console.log(wx.getStorageSync(constant.restLotteryTime));
-    },
 
     /**
      * 初始化customerId,将id放入storage缓存
      */
     initCustomerId : function(){
         let customerId = customerUtil.getCustomerIdFromStorage();
-        console.log(customerId);
         if (!customerId) {
             wx.login({
                 success: res => {
@@ -152,9 +127,7 @@ App({
                 return this.boxReserve + this.banquetReserve
                              + this.tableReserve + this.codeScanOrder;
             }
-        },
-        //用户查看我的订单,点击某个具体的记录时.该对象用于存储该条记录
-        currentSelectReservationOrOrder : {}
+        }
     },
 
     /**
