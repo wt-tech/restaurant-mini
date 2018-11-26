@@ -17,3 +17,10 @@ page{
     height: 0;
     color: transparent;
 }
+
+.wt-company{
+    margin-top: 10rpx;
+    font-size: 30rpx;
+    color: #555;
+    text-align: center;
+}

@@ -5,15 +5,19 @@ Page({
         currentSelectId: null,
         menuHeaders: [],
         menus: [],
-        tableId : null,
+        tableOrBoxId : null,//scene值,小程序码传递过来.以 'TAB-' 或者 'BOX-'开头,后面加id
+        totalCounts : 0
     },
 
     onLoad: function(options) {
-        let tableId = options.tableId;
-        if(tableId){//若是通过桌上二维码扫描进来.
+        let tableOrBoxId = options.scene;
+        console.log(options);
+        if(tableOrBoxId){//若是通过桌上二维码扫描进来.
             this.setData({
-                tableId: tableId
+                tableOrBoxId: tableOrBoxId
             });
+        }else{
+            getApp().globalHint("若您已在店内,请用微信扫描桌子或包厢上的小程序码点餐~");
         }
         this.initMenuClassification();
     },
@@ -195,6 +199,10 @@ Page({
     },
 
     goToTableReserve : function(){
+        if (this.menuCountsDished() === 0){
+            getApp().globalHint('请先点菜~');
+            return;
+        }
         this.storeMenusToAppMemory();
         wx.navigateTo({
             url: '../../pages/tab/table-reserve-form/table-reserve-form'
@@ -203,11 +211,27 @@ Page({
 
 
     goToOrderConfirm: function() {
+        if (this.menuCountsDished() === 0) {
+            getApp().globalHint('请先点菜~');
+            return;
+        }
         this.storeMenusToAppMemory();
-        let tableId = this.data.tableId;
+        let tableOrBoxId = this.data.tableOrBoxId;
         wx.navigateTo({
-            url: '../../pages/tab/menu-confirm/menu-confirm?tableId=' + tableId
+            url: '../../pages/tab/menu-confirm/menu-confirm?tableOrBoxId=' + tableOrBoxId
         })
+    },
+
+    /**
+     * 返回所点菜的总数量
+     */
+    menuCountsDished : function(){
+        let menus = this.data.menus;
+        let totalCounts = 0;
+        totalCounts =  menus.reduce(function(accumulator,item,index){
+            return accumulator + item.count;
+        },totalCounts);
+        return totalCounts;
     }
 
 })

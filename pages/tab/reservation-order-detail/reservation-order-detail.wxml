@@ -5,33 +5,50 @@
     </view>
     <view class="divLine"></view>
 
-    <view calss="reserve-info">
-        <view class="row">
+    <view calss="reserve-info" wx:if="{{showInfo.baseInfo}}">
+        <view class="row" wx:if="{{showInfo.Name}}">
             <view>预订人:</view>
-            <view>{{reserveInfo.reservationsName}}</view>
+            <view>{{reserveInfo.reservationsName}}{{reserveInfo.reservationsSex}}</view>
         </view>
 
-        <view class="row">
+        <view class="row" wx:if="{{showInfo.reserveTime}}">
             <view>预订时间:</view>
             <view>{{reserveInfo.reservationsStartTime}}</view>
         </view>
 
-        <view class="row">
+        <view class="row" wx:if="{{showInfo.reservationsPopulation}}">
             <view>预订人数:</view>
             <view>{{reserveInfo.reservationsNum}}人</view>
         </view>
 
-        <view class="row">
+        <view class="row" wx:if="{{showInfo.roomName}}">
             <view>预订包厢:</view>
             <view>{{reserveInfo.box[0].roomName}}</view>
         </view>
 
-        <view class="row">
+
+
+        <view class="row" wx:if="{{showInfo.reservationsQuantity}}">
+            <view>预订席数:</view>
+            <view>{{reserveInfo.reservationsNum}}席</view>
+        </view>
+
+        <view class="row" wx:if="{{showInfo.combo}}">
+            <view>所选套餐:</view>
+            <view>{{reserveInfo.combo.comboName}}</view>
+        </view>
+
+        <view class="row" wx:if="{{showInfo.tel}}">
             <view>联系方式:</view>
             <view>{{reserveInfo.reservationsTel}}</view>
         </view>
 
-        <view class="row">
+        <view class="row" wx:if="{{showInfo.orderTime}}">
+            <view>下单时间:</view>
+            <view>{{reserveInfo.reserveTime}}</view>
+        </view>
+
+        <view class="row" wx:if="{{showInfo.comment}}">
             <view class="remark-info">备注信息:</view>
             <view class="remark-info">
                 <textarea disabled='true' value='{{reserveInfo.remarks}}'></textarea>
@@ -39,34 +56,32 @@
         </view>
         <view class="divLine"></view>
     </view>
+    <view wx:else class="empty-baseInfo">无</view>
 
-    
+
     <view class="title">
         <view class="title-left"></view>
         <view class="title-content">菜品信息</view>
     </view>
     <view class="divLine"></view>
-    
 
-    <view wx:if="{{menus.length > 0}}" class="menu-info">
-        <view wx:for="{{menus}}" wx:for-item="menu" wx:key="menu.id" class="menu">
+
+    <view wx:if="{{reserveInfo.menu.length > 0}}" class="menu-info">
+        <view wx:for="{{reserveInfo.menu}}" wx:for-item="menu" wx:key="menu.id" class="menu">
             <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
             <view class="middle-area">
                 <view class="title">{{menu.name}}</view>
             </view>
             <view class="middle-area2">
-                <view wx:if="{{menu.sizeList.length > 1}}" class="title">{{menu.selectedSize.value}}</view>
+                <view class="title">{{menu.specifications}}</view>
             </view>
             <view class="right-area">
-                <text>¥{{menu.selectedSize.price}} * </text>
-                <text class="item-quantity">{{menu.count}} </text>
+                <text>¥{{menu.choosePrice}} * </text>
+                <text class="item-quantity">{{menu.menuCount}} </text>
             </view>
         </view>
     </view>
     <view wx:else class="empty-menu">
-        无
+        {{reserveInfo.type=='banquetReserveList'?reserveInfo.combo.comboName+'套餐':'无'}}
     </view>
 </scroll-view>
-<view>
-    <button class="button" bindtap='reserveSubmit'>确认无误,提交</button>
-</view>

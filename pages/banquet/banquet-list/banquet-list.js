@@ -9,39 +9,43 @@ Page({
             'https://www.qghls.com/statics/restaurant/info4.jpg',
         ],
         banquetList: [
-            {
-                id: 5,
-                banquetPrice: 1288,
-                banquetName: '永结同心',
-                banquetDescription: '新人婚礼套餐,超值优惠.',
-                imgURLs: [
-                    'https://www.qghls.com/statics/restaurant/xiyan.jpg'
-                ],
-            },
-            {
-                id: 1,
-                banquetPrice: 1488,
-                banquetName: '白头偕老',
-                banquetDescription: '新人婚礼套餐,超值优惠.',
-                imgURLs: [
-                    'https://www.qghls.com/statics/restaurant/xiyan2.jpg'
-                ],
-            }
+            // {
+            //     id: 5,
+            //     banquetPrice: 1288,
+            //     banquetName: '永结同心',
+            //     banquetDescription: '新人婚礼套餐,超值优惠.',
+            //     imgURLs: [
+            //        {
+            //             url: 'https://www.qghls.com/statics/restaurant/xiyan.jpg'
+            //        }
+            //     ],
+            // },
+            // {
+            //     id: 1,
+            //     banquetPrice: 1488,
+            //     banquetName: '白头偕老',
+            //     banquetDescription: '新人婚礼套餐,超值优惠.',
+            //     imgURLs: [
+            //        {
+            //             url: 'https://www.qghls.com/statics/restaurant/xiyan2.jpg'
+            //        }
+            //     ],
+            // }
         ],
         activityImgs : [
-            "https://www.qghls.com/statics/restaurant/activity2.jpg",
-            "https://www.qghls.com/statics/restaurant/activity1.jpg"
+            // "https://www.qghls.com/statics/restaurant/activity2.jpg",
+            // "https://www.qghls.com/statics/restaurant/activity1.jpg"
         ],
     },
 
 
     onLoad: function (options) {
-        //this.initBanquetList();
+        this.initBanquetList();
     },
 
     initBanquetList : function(){
         let that = this;
-        let url = "combo/listcombo";
+        let url = "combo/listcombo?currentPageNo=1";
         httpReq.getRequest([url]).then(function (success) {
             if (success.status==='success' && Array.isArray(success.combos)){
                 console.log(success.combos);

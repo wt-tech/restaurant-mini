@@ -26,9 +26,9 @@
     <view class="divLine"></view>
     <view class="banquets">
         <view class="banquet" wx:for="{{banquetList}}" wx:for-item="banquet" wx:key="id">
-            <image bindtap='previewImage' data-url="{{banquet.imgURLs[0]}}" class="banquet-img" src="{{banquet.imgURLs[0]}}"></image>
+            <image bindtap='previewImage' data-url="{{banquet.imgURLs[0].url}}" class="banquet-img" src="{{banquet.imgURLs[0].url}}"></image>
             <view class="banquet-name">{{banquet.banquetName}}套餐</view>
-            <view class="banquet-description">{{banquet.banquetDescription}}</view>
+            <view  v:if="{{!!banquet.banquetDescription}}" class="banquet-description" style='text-align : center;'>{{banquet.banquetDescription}}</view>
             <view class="banquet-price">价格:{{banquet.banquetPrice}}元/桌</view>
             <view class="buttons">
                 <view bindtap='goToBanquetDetail' class="go-to-reserve">查看详情</view>

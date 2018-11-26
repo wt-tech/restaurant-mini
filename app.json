@@ -1,11 +1,14 @@
 {
     "pages": [
-        "pages/tab/new-reservation-list/new-reservation-list",
         "tab/index/index",
+        "pages/activities/test/lottery",
+        "pages/activities/lottery/lottery",
         "tab/personal/personal",
+        "pages/tab/reservation-order-detail/reservation-order-detail",
+        "pages/tab/new-reservation-list/new-reservation-list",
+        "tab/menu/menu",
         "pages/tab/table-reserve-confirm/table-reserve-confirm",
         "pages/tab/table-reserve-form/table-reserve-form",
-        "tab/menu/menu",
         "pages/box-reserve/box-reserve",
         "pages/box-reserve-confirm/box-reserve-confirm",
         "pages/box-reserve-form/box-reserve-form",
@@ -18,7 +21,7 @@
         "pages/tab/menu-confirm/menu-confirm"
     ],
     "window": {
-        "backgroundTextStyle": "light",
+        "backgroundTextStyle": "black",
         "navigationBarBackgroundColor": "#FF3030",
         "navigationBarTitleText": "新煮天下美食府",
         "navigationBarTextStyle": "white"
@@ -47,6 +50,10 @@
         ]
     },
     "plugins": {
+        "prizeWheel": {
+            "version": "0.2.3",
+            "provider": "wx0fad99ffd4901c68"
+        },
         "calendar": {
             "version": "1.1.1",
             "provider": "wx23a9cef3522e4f7c"

@@ -12,7 +12,7 @@
         <!-- 菜单 -->
         <scroll-view scroll-y class="menus">
             <view wx:for="{{menus}}" wx:for-item="menu" wx:key="menu.id" class="menu">
-                <image class="food-img" src="../../img/menu/gbxq.jpg"></image>
+                <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
                 <view class="middle-area">
                     <view class="title">{{menu.name}}</view>
                     <view class="discount-price">¥{{menu.selectedSize.price}}元</view>

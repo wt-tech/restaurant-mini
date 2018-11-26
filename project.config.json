@@ -11,8 +11,8 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
-	"appid": "wx28e3c37b96cf1939",
+	"libVersion": "2.4.0",
+	"appid": "wxcb9fa37aa44f29a4",
 	"projectname": "restaurant",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -27,13 +27,60 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "桌子扫码点餐",
+					"pathName": "tab/menu/menu",
+					"query": "scene=BOX7"
+				},
+				{
+					"id": -1,
+					"name": "桌子扫码点餐",
+					"pathName": "tab/menu/menu",
+					"query": "scene=BOX-7"
+				},
+				{
+					"id": -1,
+					"name": "桌子扫码点餐",
+					"pathName": "tab/menu/menu",
+					"query": "scene=TAB-7"
+				},
+				{
+					"id": -1,
+					"name": "BOX--309",
+					"pathName": "tab/menu/menu",
+					"query": "scene=BOX--309"
+				},
+				{
+					"id": -1,
+					"name": "BOX--309",
+					"pathName": "tab/index/index",
+					"query": "scene=BOX-309"
+				},
+				{
+					"id": -1,
+					"name": "TAB-506",
+					"pathName": "tab/menu/menu",
+					"query": "scene=TAB-5"
+				},
+				{
+					"id": -1,
+					"name": "BOX-309",
+					"pathName": "tab/menu/menu",
+					"query": "scene=BOX-6"
+				}
+			]
 		}
 	}
 }

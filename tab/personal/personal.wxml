@@ -6,53 +6,88 @@
 
     <block wx:else>
         <image class="avatar" src='{{userInfo.url}}'></image>
-        <view class="nickname">{{userInfo.nickName}}</view>
+        <view bindlongtap='getUserCode' class="nickname">{{userInfo.nickName}}</view>
     </block>
 </view>
 
-<view bindtap='showReservations' class="title">
+<!-- 包厢预定开始 -->
+<view bindtap='showBoxReservations' class="title">
     <view class="title-left"></view>
-    <view class="title-content">我的预定</view>
-    <view class="title-tips">Personal Reservations</view>
-    <view  class="title-image"><image class="open" src='../../img/open.png'></image></view>
-    
+    <view class="title-content">包厢预订</view>
+    <view class="title-tips">Room Reservations</view>
+    <view class="title-image">
+        <image class="open" src='../../img/open.png'></image>
+    </view>
 </view>
 <view class="divLine"></view>
-
-<!-- 隐藏域 -->
-<view hidden="{{!showReservations}}">
-
-    <view class="banquet">
-        <view wx:for="{{banquetReserveList}}" wx:key="id">
-            <view class="reserve-item">
-                <image class="icon" src="../../img/function/xi.png"></image>
-                <view>喜宴预订 : {{item.reservationsStartTime}}</view>
-            </view>
-            <view class="subDivLine"></view>
+<view class="box" wx:if="{{showBoxReservations}}">
+    <view wx:for="{{boxReserveList}}" wx:key="id">
+        <view class="reserve-item" bindtap='goToReservationOrderDetail' data-type='boxReserveList' data-index='{{index}}'>
+            <image class="icon" src="../../img/function/bao.png"></image>
+            <view>包厢预定 : {{item.reservationsStartTime}}</view>
         </view>
+        <view class="subDivLine"></view>
     </view>
-    <view class="box">
-        <view wx:for="{{boxReserveList}}" wx:key="id">
-            <view class="reserve-item">
-                <image class="icon" src="../../img/function/bao.png"></image>
-                <view>包厢预定 : {{item.reservationsStartTime}}</view>
-            </view>
-            <view class="subDivLine"></view>
-        </view>
-    </view>
-
 </view>
+<!-- 包厢预定结束 -->
+
+
+<!-- 喜宴预定开始 -->
+<view bindtap='showBanquetReservations' class="title">
+    <view class="title-left"></view>
+    <view class="title-content">喜宴预订</view>
+    <view class="title-tips">Banquet Reservations</view>
+    <view class="title-image">
+        <image class="open" src='../../img/open.png'></image>
+    </view>
+</view>
+<view class="divLine"></view>
+<view wx:if="{{showBanquetReservations}}" class="banquet">
+    <view wx:for="{{banquetReserveList}}" wx:key="id" >
+        <view class="reserve-item" bindtap='goToReservationOrderDetail' data-type='banquetReserveList' data-index='{{index}}'>
+            <image class="icon" src="../../img/function/xi.png"></image>
+            <view>喜宴预订 : {{item.reservationsStartTime}}</view>
+        </view>
+        <view class="subDivLine"></view>
+    </view>
+</view>
+<!-- 喜宴预定结束 -->
+
+
+<!-- 店外预定开始 -->
+<view bindtap='showTableReservations' class="title">
+    <view class="title-left"></view>
+    <view class="title-content">店外预订</view>
+    <view class="title-tips">Table Reservations</view>
+    <view class="title-image">
+        <image class="open" src='../../img/open.png'></image>
+    </view>
+</view>
+<view class="divLine"></view>
+<view wx:if="{{showTableReservations}}" class="table">
+    <view wx:for="{{tableReserveList}}" wx:key="id">
+        <view class="reserve-item" bindtap='goToReservationOrderDetail' data-type='tableReserveList' data-index='{{index}}'>
+            <image class="icon" src="../../img/function/food.png"></image>
+            <view>店外预定 : {{item.reservationsStartTime}}</view>
+        </view>
+        <view class="subDivLine"></view>
+    </view>
+</view>
+<!-- 店外预定结束 -->
+
 
 <view bindtap='showOrders' class="title">
     <view class="title-left"></view>
     <view class="title-content">我的订单</view>
     <view class="title-tips">Personal Orders</view>
-    <view class="title-image"><image class="open" src='../../img/open.png'></image></view>
+    <view class="title-image">
+        <image class="open" src='../../img/open.png'></image>
+    </view>
 </view>
 <view class="divLine"></view>
-<view class="orders" hidden="{{!showOrders}}">
+<view class="orders" wx:if="{{showOrders}}">
     <view wx:for="{{menuOrderList}}" wx:key="id">
-        <view class="reserve-item">
+        <view class="reserve-item" bindtap='goToReservationOrderDetail' data-type='menuOrderList' data-index='{{index}}'>
             <image class="icon" src="../../img/function/food.png"></image>
             <view>{{item.createTime}}</view>
         </view>

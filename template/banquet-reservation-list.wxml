@@ -1,0 +1,27 @@
+<template name="banquetReservations">
+
+    <view wx:for="{{currentSelectedItems}}" wx:for-index="index" wx:key="id" wx:for-item="reservation" bindtap='showHideSubArea' data-flag="{{reservation.showSubArea}}" data-reserve-type="banquetReservations" data-index="{{index}}">
+        <view class="item">
+            <view>{{index+1}}.</view>
+            <view>{{reservation.reservationsName}}{{reservation.reservationsSex}}</view>
+            <view catchtap='goToDial' data-tel="{{reservation.reservationsTel}}">{{reservation.reservationsTel}}</view>
+            <view>{{reservation.combo.comboName}}</view>
+            <view>{{reservation.reservationsNum}}席</view>
+        </view>
+        <view class="divLine"></view>
+
+        <view class="item-comment-menu" hidden="{{!reservation.showSubArea}}">
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                日 期 : {{reservation.reservationsStartTime}}
+            </view>
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                下单时间 : {{reservation.reserveTime}}
+            </view>
+
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                备 注 : {{reservation.remarks?reservation.remarks : '无'}}
+            </view>
+            <view class="menu-divLine"></view>
+        </view>
+    </view>
+</template>

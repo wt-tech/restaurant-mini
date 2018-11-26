@@ -123,8 +123,19 @@ Page({
             }
         }
         if (!!banquetReserveInfo.tel) {
-            let pattern = /1[\d]{10}/;
-            if (!pattern.test(banquetReserveInfo.tel)) {//联系方式格式不对
+            var telphone = /^[\d-]{5,14}$/;
+            var mobile = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+            if (('' + banquetReserveInfo.tel).substr(0, 1) == '1') {//填的是手机号
+                if (!mobile.test(banquetReserveInfo.tel)) {
+                    //联系方式格式不对
+                    wx.showToast({
+                        title: '联系方式有误',
+                        image: '../../../img/tips.png',
+                    });
+                    return false;
+                }
+            }
+            else if (!telphone.test(banquetReserveInfo.tel)) {
                 wx.showToast({
                     title: '联系方式有误',
                     image: '../../../img/tips.png',

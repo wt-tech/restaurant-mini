@@ -11,7 +11,7 @@
         <view class="right-scroll-view">
             <scroll-view scroll-y class="menus">
                 <view wx:for="{{menus}}" wx:for-item="menu" wx:key="menu.id" class="menu">
-                    <image class="food-img" src="../../img/menu/gbxq.jpg"></image>
+                    <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
                     <view class="middle-area">
                         <view class="title">{{menu.name}}</view>
                         <view class="discount-price">¥{{menu.selectedSize.price}}元</view>
@@ -33,9 +33,9 @@
             </scroll-view>
             <view>
                 <!-- 通过小程序进来,没有携带桌子id -->
-                <button hidden="{{!!tableId}}" bindtap='goToTableReserve' class="button">下一步</button>
+                <button hidden="{{!!tableOrBoxId}}" bindtap='goToTableReserve' class="button">下一步</button>
                 <!-- 通过扫桌面上二维码进来 -->
-                <button hidden="{{!tableId}}" bindtap='goToOrderConfirm' class="button">下一步</button>
+                <button hidden="{{!tableOrBoxId}}" bindtap='goToOrderConfirm' class="button">下一步</button>
             </view>
         </view>
     </view>

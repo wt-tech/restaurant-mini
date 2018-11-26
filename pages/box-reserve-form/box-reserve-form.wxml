@@ -46,7 +46,7 @@
             <view class="star">*</view>
             <view class="first-child">联系方式 :</view>
             <view class='second-child'>
-                <input bindblur="telComplete" name="reservationsTel" maxlength='11' 
+                <input bindblur="telComplete" name="reservationsTel" maxlength='14' 
                        value="{{boxReserveInfo.tel}}" placeholder='填写联系方式'></input>
             </view>
         </view>

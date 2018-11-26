@@ -8,13 +8,14 @@ Page({
             nickName: '',
             buttonShow: true
         },
-        banquetReserveList: [],
         boxReserveList: [],
+        banquetReserveList: [],
+        tableReserveList : [],
         menuOrderList: [],
+        showBoxReservations: false,
+        showBanquetReservations : false,
+        showTableReservations : false,
         showOrders: false,
-        showReservations: false,
-        hideLoading: 0b00,
-        binaryThree: 0b11,
 
         manager : {
             numbersOfNotify : 0
@@ -39,27 +40,51 @@ Page({
         });
     },
 
-    showReservations: function() {
-        let flag = this.data.showReservations;
-        if (!flag){
-            if (this.data.banquetReserveList.length === 0) {//只要没有就查找
-                this.showLoading();
-                this.initBanquetReservations();
-            }
+    showBoxReservations: function() {
+        let flag = this.data.showBoxReservations;
+        if (!flag){//状态从不显示到显示
             if (this.data.boxReserveList.length === 0) {//只要没有就查找
                 this.showLoading();
                 this.initBoxReservations();
             }
         }
         this.setData({
-            showReservations: !flag
+            showBoxReservations: !flag
         });
     },
+
+    showBanquetReservations: function () {
+        let flag = this.data.showBanquetReservations;
+        if (!flag) {//状态从不显示到显示
+            if (this.data.banquetReserveList.length === 0) {//只要没有就查找
+                this.showLoading();
+                this.initBanquetReservations();
+            }
+        }
+        this.setData({
+            showBanquetReservations: !flag
+        });
+    },
+
+    showTableReservations : function(){
+        let flag = this.data.showTableReservations;
+        if (!flag) {//状态从不显示到显示
+            if (this.data.tableReserveList.length === 0) {//只要没有就查找
+                this.showLoading();
+                this.initTableReservations();
+            }
+        }
+        this.setData({
+            showTableReservations: !flag
+        });
+    },
+
 
     showOrders : function(){
         let flag = this.data.showOrders;
         if(!flag){
             if (this.data.menuOrderList.length === 0) {//只要没有就查找
+                this.showLoading();
                 this.initOrders();
             }
         }
@@ -68,23 +93,8 @@ Page({
         });
     },
 
-    hideLoadingConditional: function() {
-        let that = this;
-        let hideLoading = that.data.hideLoading;
-        let three = that.data.binaryThree;
-        if (hideLoading & three === three) {
-            //说明两个请求都已经完成.可在这里写两个请求都完成后需要实现的功能.
-            wx.hideLoading();
-            let quantity = that.data.boxReserveList.length + that.data.banquetReserveList.length;
-            if(!quantity){
-                wx.showToast({
-                    title: '没有预订信息',
-                    icon: 'none',
-                    duration: 2000
-                })
-            }
-        }
-    },
+
+
 
     initBoxReservations: function() {
         let that = this;
@@ -100,10 +110,7 @@ Page({
         }).catch(function(err) {
             getApp().globalHint('包厢预定记录获取失败');
         }).finally(function() {
-            that.setData({
-                hideLoading: that.data.hideLoading | 0b10
-            });
-            that.hideLoadingConditional();
+            wx.hideLoading();
         });
     },
 
@@ -121,16 +128,30 @@ Page({
         }).catch(function(err) {
             getApp().globalHint('喜宴预定记录获取失败');
         }).finally(function() {
-            that.setData({
-                hideLoading: that.data.hideLoading | 0b01
-            });
-            that.hideLoadingConditional();
+            wx.hideLoading();
+        });
+    },
+
+    initTableReservations: function () {
+        let that = this;
+        let url = "tablereservehome/listtablereservehomebycustomerid";
+        let params = {
+            customerId: customer.getCustomerIdFromStorage()
+        };
+        httpReq.getRequest([url, params]).then(function (success) {
+            if (success.status == 'success') {
+                that.processRawTableReservationsData(success.tablereservehomes);
+            } else
+                getApp().globalHint('店外预定记录获取失败');
+        }).catch(function (err) {
+            getApp().globalHint('店外预定记录获取失败');
+        }).finally(function () {
+            wx.hideLoading();
         });
     },
 
     initOrders: function() {
         let that = this;
-        that.showLoading();
         let url = "tablereserve/listtablereservebycustomerid";
         let params = {
             customerId: customer.getCustomerIdFromStorage()
@@ -144,19 +165,16 @@ Page({
             getApp().globalHint('订单记录获取失败');
         }).finally(function() {
             wx.hideLoading();
-            if (that.data.menuOrderList.length === 0){
-                wx.showToast({
-                    title: '您尚未点过餐',
-                    icon : 'none',
-                    duration: 2000
-                })
-            }
         });
     },
 
     processRawBoxReservationsData: function(reservations) {
         let that = this;
         if (Array.isArray(reservations)) {
+            if (reservations.length == 0){
+                getApp().globalHint('无包厢预订记录');
+                return;
+            }
             that.setData({
                 boxReserveList: reservations.map(function(boxReservation) {
                     boxReservation.reservationsStartTime =
@@ -172,6 +190,10 @@ Page({
 
         let that = this;
         if (Array.isArray(banquetReservations)) {
+            if (banquetReservations.length == 0) {
+                getApp().globalHint('无喜宴预订记录');
+                return;
+            }
             that.setData({
                 banquetReserveList: banquetReservations.map(function(banquetReservation) {
                     banquetReservation.reservationsStartTime =
@@ -182,9 +204,25 @@ Page({
         }
     },
 
+    processRawTableReservationsData: function (tablereservehomes){
+        let that = this;
+        if (Array.isArray(tablereservehomes)) {
+            if (tablereservehomes.length == 0) {
+                getApp().globalHint('无店外预订记录');
+            }
+            that.setData({
+                tableReserveList: tablereservehomes
+            });
+        }
+    },
+
     processRawOrderData: function(tableReservations) {
         let that = this;
         if (Array.isArray(tableReservations)) {
+            if (tableReservations.length == 0) {
+                getApp().globalHint('无店外预订记录');
+                return;
+            }
             that.setData({
                 menuOrderList: tableReservations.map(function(tableReservation) {
                     tableReservation.createTime =
@@ -232,6 +270,26 @@ Page({
         wx.navigateTo({
             url: '../../pages/tab/new-reservation-list/new-reservation-list',
         })
+    },
+
+    prepareDataAndSetToAppMemory : function(params){
+        let item = this.data[params.type][params.index];
+        item.type = params.type;
+        getApp().globalData.currentSelectReservationOrOrder = item;
+    },
+
+    goToReservationOrderDetail : function(res){
+        console.log(res.currentTarget.dataset);
+        this.prepareDataAndSetToAppMemory(res.currentTarget.dataset);
+        wx.navigateTo({
+            url: '../../pages/tab/reservation-order-detail/reservation-order-detail',
+        })
+    },
+
+    getUserCode : function(){
+        let usercode = customer.getCustomerIdFromStorage();
+        getApp().globalHint('您的用户编码为 : ' + usercode);
     }
+
 
 })

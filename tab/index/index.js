@@ -73,6 +73,14 @@ Page({
         })
     },
 
+    scanCode : function(){
+        wx.scanCode({
+            success:function(res){
+                console.log(res);
+            }
+        })
+    },
+
     goToDirector: function () {
         wx.openLocation({
             latitude: 30.70,
@@ -83,7 +91,7 @@ Page({
 
     goToDial : function(){
         wx.makePhoneCall({
-            phoneNumber : '15671651407'
+            phoneNumber : '13731909494'
         });
     }
 

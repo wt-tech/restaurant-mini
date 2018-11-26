@@ -1,1 +1,148 @@
-/* pages/tab/new-reservation-list/new-reservation-list.wxss */
+
+.reservation-header{
+    display: flex;
+    flex-direction: row;
+
+    background: #eee;
+}
+
+.reservation-header .active {
+    background:#fff;
+}
+
+
+.header-column{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    width: 25%;
+}
+
+.header-column > view{
+    height: 80rpx;
+}
+
+.character{
+    line-height: 80rpx;
+    font-size: 35rpx;
+    color: #555;
+    width: 100%;
+    text-align: center;
+}
+
+.red-dot{
+    font-size: 25rpx;
+    margin-top: 25rpx;
+    height: 30rpx;
+    width: 30rpx;
+    background: rgb(233, 38, 38);
+    color: white;
+    border-radius: 15rpx;
+    text-align: center;
+}
+
+.vertical-boundary{
+    width:5rpx;
+    background-color: #e0e3da;
+}
+
+
+
+.divLine {
+    background: #e0e3da;
+    width: 100%;
+    height: 5rpx;
+}
+
+
+
+
+
+.reservationAndOrders .item{
+    margin-top: 10rpx;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    /* background-color: #555; */
+    display: flex;
+    flex-direction: row;
+    font-size: 29rpx;
+    color: #333;
+    justify-content: space-around;
+}
+
+
+.item-comment-menu{
+    font-size: 25rpx;
+    color: #444;
+    margin-left: 35rpx;
+}
+
+
+/* 菜品信息 */
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 80rpx;
+    line-height: 80rpx;
+    width: 100%;
+}
+
+.title-left {
+    margin-left: 15rpx;
+    background-color: orange;
+    width: 10rpx;
+}
+
+
+
+.menu-divLine{
+    background: #e0e3da;
+    width: 100%;
+    height: 5rpx;
+}
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100rpx;
+    /* margin-left: 10rpx; */
+    background-color: #fff;
+}
+
+.menu > image {
+    width: 100rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+}
+
+.middle-area {
+    width: 250rpx;
+
+}
+
+
+.middle-area2 {
+    width: 70rpx;
+}
+.middle-area .title,.middle-area2 .title,.right-area {
+    font-size: 25rpx;
+    color: #444;
+}
+
+.item-quantity{
+    color: red;
+}
+
+
+
+
+.tips{
+    width: 100%;
+    font-size: 30rpx;
+    text-align: center;
+    margin-top: 20rpx;
+    color: #444;
+}

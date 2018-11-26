@@ -1,0 +1,44 @@
+<template name="tableReservations">
+
+    <view wx:for="{{currentSelectedItems}}" wx:for-index="index" wx:key="id" wx:for-item="reservation" bindtap='showHideSubArea' data-flag="{{reservation.showSubArea}}" data-reserve-type="tableReservations" data-index="{{index}}">
+        <view class="item">
+            <view>{{index+1}}.</view>
+            <view>{{reservation.reservationsName}}{{reservation.reservationsSex}}</view>
+            <view catchtap='goToDial' data-tel="{{reservation.reservationsTel}}">{{reservation.reservationsTel}}</view>
+            <view>{{reservation.reservationsNum}}人</view>
+        </view>
+        
+        <view class="divLine"></view>
+
+        <view class="item-comment-menu" hidden="{{!reservation.showSubArea}}">
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                预定时间 : {{reservation.reservationsStartTime}}
+            </view>
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                下单时间 : {{reservation.reserveTime}}
+            </view>
+            <view style='line-height : 70rpx; margin-left : 50rpx;'>
+                备 注 : {{reservation.remarks?reservation.remarks : '无'}}
+            </view>
+            <view class="menu-divLine"></view>
+            <view wx:for="{{reservation.menu}}" wx:for-item="menu" wx:key="id" wx:for-index="menuIndex">
+                <view class="menu">
+                    <view>{{menuIndex+1}}).</view>
+                    <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
+                    <!-- change src here -->
+                    <view class="middle-area">
+                        <view class="title">{{menu.name}}</view>
+                    </view>
+                    <view class="middle-area2">
+                        <view class="title">{{menu.specifications}}</view>
+                    </view>
+                    <view class="right-area">
+                        <text>¥{{menu.choosePrice}} * </text>
+                        <text class="item-quantity">{{menu.menuCount}}</text>
+                    </view>
+                </view>
+                <view class="menu-divLine"></view>
+            </view>
+        </view>
+    </view>
+</template>

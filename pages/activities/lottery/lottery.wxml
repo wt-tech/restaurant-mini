@@ -1,0 +1,8 @@
+
+<view>
+    <lottery
+        startBtnEnabled = 'true'
+        needsPrizeDrawing = "{{drawing2}}"
+        bindtap = "prizeDrawingStarted2"
+    ></lottery>
+</view>

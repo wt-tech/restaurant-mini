@@ -1,2 +1,46 @@
-<!--pages/tab/new-reservation-list/new-reservation-list.wxml-->
-<text>pages/tab/new-reservation-list/new-reservation-list.wxml</text>
+<import src="../../../template/box-reservation-list.wxml" />
+<import src="../../../template/banquet-reservation-list.wxml" />
+<import src="../../../template/table-reservation-list.wxml" />
+<import src="../../../template/order-list.wxml" />
+<view class="page">
+    <view class="reservation-header">
+        <view bindtap='boxReservationsSelect' class="header-column {{currentSelectedType=='boxReservations'?'active' : ''}}">
+            <view class="character">包厢预定</view>
+            <view wx:if='{{newNotifyInfo.boxReserve}}'>
+                <view class="red-dot">{{newNotifyInfo.boxReserve}}</view>
+            </view>
+            <view class="vertical-boundary"></view>
+        </view>
+        <view bindtap='banquetReservationsSelect' class="header-column {{currentSelectedType=='banquetReservations'?'active' : ''}}">
+            <view class="character">喜宴预订</view>
+            <view wx:if='{{newNotifyInfo.banquetReserve}}'>
+                <view class="red-dot">{{newNotifyInfo.banquetReserve}}</view>
+            </view>
+            <view class="vertical-boundary"></view>
+        </view>
+        <view bindtap='tableReservationsSelect' class="header-column {{currentSelectedType=='tableReservations'?'active' : ''}}">
+            <view class="character">店外预约</view>
+            <view wx:if='{{newNotifyInfo.tableReserve}}'>
+                <view class="red-dot">{{newNotifyInfo.tableReserve}}</view>
+            </view>
+            <view class="vertical-boundary"></view>
+        </view>
+        <view bindtap='ordersSelect' class="header-column {{currentSelectedType=='orders'?'active' : ''}}">
+            <view class="character">新订单</view>
+            <view wx:if='{{newNotifyInfo.codeScanOrder}}'>
+                <view class="red-dot">{{newNotifyInfo.codeScanOrder}}</view>
+            </view>
+            <view class="vertical-boundary"></view>
+        </view>
+    </view>
+
+    <view class="divLine"></view>
+
+    <scroll-view class="reservationAndOrders" style='width : 100%;height:{{scrollSize.height}}px'>
+        <view class='tips' wx:if="{{currentSelectedItems.length===0}}">
+            暂时没有新的预定或订单.
+        </view>
+        <template is='{{currentSelectedType}}' data="{{currentSelectedItems}}"></template>
+    </scroll-view>
+
+</view>

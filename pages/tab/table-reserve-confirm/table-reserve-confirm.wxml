@@ -50,7 +50,7 @@
 
     <view wx:if="{{menus.length > 0}}" class="menu-info">
         <view wx:for="{{menus}}" wx:for-item="menu" wx:key="menu.id" class="menu">
-            <image class="food-img" src="../../img/menu/gbxq.jpg"></image>
+            <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
             <view class="middle-area">
                 <view class="title">{{menu.name}}</view>
             </view>

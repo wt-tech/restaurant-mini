@@ -2,7 +2,7 @@
     <view class="room" wx:for="{{roomList}}" wx:for-item="room" wx:key="id">
         <view class="room-number">{{room.roomNumber}}房</view>
         <image class="room-img" src="{{room.imgURLs[0]}}"></image>
-        <view class="room-description">{{room.roomDescription}}</view>
+        <view class="room-description">{{room.roomDescription?room.roomDescription:''}}</view>
         <view class="room-size">舒适座位数:{{room.roomSize}}人</view>
         <view class="buttons">
             <button wx:if="{{!room.launchButtonAvaliable}}" disabled="true" data-id='{{room.id}}' bindtap='reserveLaunch' class="go-to-reserve">午餐已被预订>></button>

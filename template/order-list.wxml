@@ -1,0 +1,31 @@
+<template name="orders">
+
+    <view wx:for="{{currentSelectedItems}}" wx:for-index="index" wx:key="id" wx:for-item="table" bindtap='showHideSubArea' data-flag="{{table.showSubArea}}" data-reserve-type="boxReservations" data-index="{{index}}">
+        <view class="item">
+            <view>{{index+1}}.</view>
+            <view>{{table.table.number}}桌</view>
+            <view>下单时间 : {{table.reserveTime}}</view>
+        </view>
+        <view class="divLine"></view>
+        <view class="item-comment-menu" hidden="{{!table.showSubArea}}">
+            <view wx:for="{{table.menu}}" wx:for-item="menu" wx:key="id" wx:for-index="menuIndex">
+                <view class="menu">
+                    <view>{{menuIndex+1}}).</view>
+                    <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
+                    <!-- change src here -->
+                    <view class="middle-area">
+                        <view class="title">{{menu.name}}</view>
+                    </view>
+                    <view class="middle-area2">
+                        <view class="title">{{menu.specifications}}</view>
+                    </view>
+                    <view class="right-area">
+                        <text>¥{{menu.choosePrice}} * </text>
+                        <text class="item-quantity">{{menu.menuCount}}</text>
+                    </view>
+                </view>
+                <view class="menu-divLine"></view>
+            </view>
+        </view>
+    </view>
+</template>

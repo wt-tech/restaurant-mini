@@ -1,4 +1,4 @@
-<view>
+<view class="total-page">
     <!-- 轮播图 -->
     <view class="swiper">
         <swiper indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" circular="true">
@@ -30,7 +30,7 @@
                 <image class="icon" src="../../img/function/xi.png"></image>
             </view>
         </view>
-        <view class="function">
+        <view bindtap='scanCode' class="function">
             <view class="text">
                 <view class="above">扫码买单</view>
                 <view class="below">提前约定</view>
@@ -39,6 +39,7 @@
                 <image class="icon" src="../../img/function/code.png"></image>
             </view>
         </view>
+
         <view class="function">
             <view class="text">
                 <text decode='true' class="above">会员卡&ensp;&ensp;</text>
@@ -48,13 +49,15 @@
                 <image class="icon" src="../../img/function/vip1.png"></image>
             </view>
         </view>
+
+
     </view>
 
     <view class="restaurant-info">
 
         <view class="logo-row">
-            <image src='../../img/logo.png'></image>
-            <view class="r-middle-area"></view>
+            <image src='../../img/logo.jpg'></image>
+            <!-- <view class="r-middle-area"></view> -->
 
         </view>
 
@@ -105,5 +108,5 @@
         </view>
         <view class="divLine"></view>
     </view>
-
+    <view class="wt-company">万特公司 @小程序定做 18056339696</view>
 </view>

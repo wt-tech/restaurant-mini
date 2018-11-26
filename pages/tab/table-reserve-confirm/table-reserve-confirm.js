@@ -20,12 +20,14 @@ Page({
         this.setData({
             menus: menus
         });
+        console.log(menus);
     },
     initReserveInfo: function () {
         let params = getApp().assembleTableReservInfo();
         this.setData({
             reserveInfo: params
         });
+        console.log(params);
     },
     reserveSubmit: function () {
 

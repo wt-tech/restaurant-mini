@@ -5,11 +5,14 @@ Page({
 
     data: {
         menus: [],
-        tableNumber : 1
+        tableOrBoxId : null,
     },
 
     onLoad: function (options) {//这里处理扫码传递过来的 桌号
-
+        let tableOrBoxId = options.tableOrBoxId;
+        this.setData({
+            tableOrBoxId: tableOrBoxId
+        });
         this.initMenus();
     },
 
@@ -50,15 +53,35 @@ Page({
     },
 
     prepareOrderParams: function () {
+        /**tableOrBoxId形如: TAB-5 BOX-9格式 */
+        let tableOrBoxId = this.data.tableOrBoxId;
+
+        try{
+            var typeAndId = tableOrBoxId.split('-');
+            var orderType = typeAndId[0];
+            var typeId = typeAndId[1];
+        }catch(e){
+            orderType = null;
+        }
+
         let params = {
             customer: {
                 id: wx.getStorageSync(constant.customerId)
-            },
-            table : {
-                id : 1,
-                'number' : 1
             }
         };
+        if(orderType == 'TAB'){
+            params.table = {
+                id: typeId
+            };
+            params.type = '桌子';
+        }else if(orderType == 'BOX'){
+            params.box = {
+                id: typeId
+            };
+            params.type = '包厢';
+        }
+
+       
         let menus = this.data.menus;
         params.menu = menus.map(function (menu) {
             return {
