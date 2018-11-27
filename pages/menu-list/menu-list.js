@@ -111,6 +111,8 @@ Page({
                     name: menu.name,
                     salesVolume: menu.salesVolume,
                     introduction: menu.introduction,
+                    uncertainPrice: menu.uncertainPrice,
+                    unit: menu.unit,
                     sort: menu.sort,
                     menuimage: menu.menuimage,
                     sizeList: size,
@@ -121,29 +123,36 @@ Page({
         }
     },
 
-    menuSizeAssemble: function(size, menu) {
-        let id = 0;
-        if (!!menu.largePrice) { //有值
-            size.push({
-                id: ++id,
-                value: '大份',
-                price: menu.largePrice
-            });
-        }
-        if (!!menu.mediumPrice) { //有值
-            size.push({
-                id: ++id,
-                value: '中份',
-                price: menu.mediumPrice
-            });
-        }
-        if (!!menu.smallPrice) { //有值
-            size.push({
-                id: ++id,
-                value: '小份',
-                price: menu.smallPrice
-            });
-        }
+    menuSizeAssemble: function (size, menu) {
+      let id = 0;
+      if (!!menu.largePrice) { //有值
+        size.push({
+          id: ++id,
+          value: '大份',
+          price: '¥' + menu.largePrice + '元'
+        });
+      }
+      if (!!menu.mediumPrice) { //有值
+        size.push({
+          id: ++id,
+          value: '中份',
+          price: '¥' + menu.mediumPrice + '元'
+        });
+      }
+      if (!!menu.smallPrice) { //有值
+        size.push({
+          id: ++id,
+          value: '小份',
+          price: '¥' + menu.smallPrice + '元'
+        });
+      }
+      if (!!menu.uncertainPrice) { //有值
+        size.push({
+          id: ++id,
+          value: null,
+          price: menu.uncertainPrice
+        });
+      }
     },
     //选择规格
     sizeChanged: function(event) {
