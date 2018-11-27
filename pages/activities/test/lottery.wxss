@@ -62,6 +62,27 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   line-height: 150rpx;
 }
 
+
+.start-btn2 {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 15rpx;
+  height: 150rpx;
+  width: 166.6666rpx;
+  background-color: #ffe400;
+  box-shadow: 0 5px 0 #e7930a;
+  color: #f6251e;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: bolder;
+  line-height: 150rpx;
+}
+
+
 .award-image {
   position: absolute;
   margin: auto;

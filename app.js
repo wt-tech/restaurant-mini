@@ -5,6 +5,7 @@ import customerUtil from './utils/customer.js';
 import httpReq from './utils/request.js';
 App({
     onLaunch: function() {
+        this.initLotteryInfo();
         this.initManagerList();
         this.addFinallyToPromise();
         this.initCustomerId();
@@ -73,6 +74,16 @@ App({
         const manager = wx.createInnerAudioContext();
         manager.src = constant.notifyMP3URL;
         manager.play();
+    },
+
+
+    initLotteryInfo : function(){
+        console.log(constant.restLotteryTime);
+        let restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
+        if (restLotteryTimes === null || restLotteryTimes === 'undefined' || restLotteryTimes === ''){
+            wx.setStorageSync(constant.restLotteryTime,1);
+        }
+        console.log(wx.getStorageSync(constant.restLotteryTime));
     },
 
 

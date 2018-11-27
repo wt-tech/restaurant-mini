@@ -33,7 +33,7 @@
         <view bindtap='scanCode' class="function">
             <view class="text">
                 <view class="above">扫码买单</view>
-                <view class="below">提前约定</view>
+                <view class="below">请至前台扫码买单</view>
             </view>
             <view>
                 <image class="icon" src="../../img/function/code.png"></image>
@@ -109,4 +109,26 @@
         <view class="divLine"></view>
     </view>
     <view class="wt-company">万特公司 @小程序定做 18056339696</view>
+</view>
+
+
+
+<view wx:if="{{showLotteryView}}" class="lottery">
+
+    <view class="container-out">
+        <view class="circle" wx:for="{{circleList}}" wx:key='*this' style="top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color: {{(index%2==0)?colorCircleFirst:colorCircleSecond}};">
+        </view>
+
+
+        <view class="container-in">
+            <view class="content-out" wx:for="{{awardList}}" wx:key='*this' style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;background-color: {{(index==indexSelect)?colorAwardSelect:colorAwardDefault}};">
+                <image class="award-image" src="{{item.imageAward}}"></image>
+            </view>
+            <view wx:if="{{!showShareBtn || isRunning}}" class="start-btn" bindtap="startGame" style=" background-color:{{isRunning?'#e7930a':'#ffe400'}}">点击抽奖
+            </view>
+            <button wx:if="{{showShareBtn && !isRunning}}" class="start-btn2" open-type="share" style=" background-color:{{isRunning?'#e7930a':'#ffe400'}}">转发</button>
+        </view>
+    </view>
+
+
 </view>

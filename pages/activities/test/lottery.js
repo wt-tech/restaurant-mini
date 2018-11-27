@@ -1,6 +1,7 @@
 import constant from '../../../utils/constant.js';
 Page({
     data: {
+        showShareBtn: false,
         circleList: [],//圆点数组
         awardList: [],//奖品数组
         colorCircleFirst: '#FFDF2F',//圆点颜色1
@@ -12,11 +13,11 @@ Page({
         imageAward: [
             {
                 url: '../../../img/lottery/cola.jpg',
-                name : '可口可乐'
+                name: '可口可乐'
             },
             {
                 url: '../../../img/lottery/orange.jpg',
-                name : '果粒橙'
+                name: '果粒橙'
             },
             {
                 url: '../../../img/lottery/no_prize.png',
@@ -42,12 +43,20 @@ Page({
                 url: '../../../img/lottery/no_prize.png',
                 name: '谢谢参与'
             }
-          
+
         ],//奖品图片数组
     },
 
     onLoad: function () {
+       this.init();
+    },
+
+    init : function(){
+        wx.showShareMenu({
+            withShareTicket: true
+        });
         var _this = this;
+        _this.setButtonStatus();
         //圆点设置
         var leftCircle = 7.5;
         var topCircle = 7.5;
@@ -130,10 +139,26 @@ Page({
             awardList: awardList
         })
     },
+
+    setButtonStatus: function () {
+        let restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
+        let hasWinLotteryBefore = wx.getStorageSync(constant.hasWinLotteryBefore);
+        let flag = restLotteryTimes === 0 && hasWinLotteryBefore === false;
+        this.setData({
+            showShareBtn: flag
+        });
+    },
+
     //开始游戏
     startGame: function () {
+
         var finallResult = this.getRandomTimes();
-        if (this.data.isRunning) return
+        if (this.data.isRunning) return;
+
+        if (!this.checkIfCanStartButton()) {
+            return;
+        }
+
         this.setData({
             isRunning: true
         })
@@ -151,7 +176,7 @@ Page({
                 //获奖提示
 
                 wx.showModal({
-                    title: '恭喜您',
+                    title: [2, 4, 7].indexOf(indexSelect)==-1?'恭喜您':'提示',
                     content: _this.lotteryTips(indexSelect),
                     showCancel: false,//去掉取消按钮
                     success: function (res) {
@@ -169,37 +194,66 @@ Page({
             })
         }, (200 + i))
     },
-    getRandomTimes : function(){
+    getRandomTimes: function () {
         var baseTimes = 480;
         var randomNumber = Math.random();
         return Math.floor(Math.random() * 240) + baseTimes;
     },
 
-    lotteryTips: function (indexSelect){
-        var no_prize_index = [2,4,7];
+    lotteryTips: function (indexSelect) {
+        var that = this;
+        var no_prize_index = [2, 4, 7];
         var tips = null;
-        if (no_prize_index.indexOf(indexSelect) == -1){
+        if (no_prize_index.indexOf(indexSelect) == -1) {
             tips = '获得了一瓶' + this.data.imageAward[parseInt((indexSelect % 8))].name;
-        }else
-            tips = "很遗憾,您未中奖~"
+            wx.setStorageSync(constant.hasWinLotteryBefore, true);
+        } else {
+            tips = "很遗憾,您未中奖~,转发至群增加一次抽奖机会";
+        }
+        that.setButtonStatus();//若剩余数量 < 1
         return tips;
     },
 
-    checkIfCanStartButton : function(){
+    checkIfCanStartButton: function () {
+        let that = this;
+        let hasWinLotteryBefore = wx.getStorageSync(constant.hasWinLotteryBefore);
+        if (hasWinLotteryBefore === true) {
+            wx.showModal({
+                title: '提示',
+                content: '您之前已经中过奖品,不可重复抽奖',
+            })
+            return false;
+        }
+
         let restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
-        if (restLotteryTimes == null || restLotteryTimes == 'undefined' || restLotteryTimes == '') {
+        if (restLotteryTimes === null || restLotteryTimes === 'undefined' || restLotteryTimes === '') {
             wx.setStorageSync(constant.restLotteryTime, 1);
         }
         restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
-        if (restLotteryTimes == 0){
-            wx.showModal({
-                title: '提示',
-                content: '每转发到群即可增加一次抽奖次数',
-                confirmText : '转发到群'
-            });
-            return false;
+        // if (restLotteryTimes == 0){
+        //     wx.showModal({
+        //         title: '提示',
+        //         content: '转发到群即可增加一次抽奖次数',
+        //         confirmText : '转发到群',
+        //         success : function(res){
+        //             if(res.confirm===true)
+        //                 that.shareToWXGroup();
+        //         }
+        //     });
+        //     return false;
+        // }
+        wx.setStorageSync(constant.restLotteryTime, restLotteryTimes - 1);
+        return true;
+    },
+
+
+    onShareAppMessage: function (options) {
+        console.log('onShareAppMessage');
+        let that = this
+        return {
+            title: '新煮天下美食府',
+            path: '/pages/index/index'
         }
-        return 
     }
 
 })

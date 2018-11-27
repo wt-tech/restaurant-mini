@@ -5,10 +5,11 @@ const onlyBookBox = "只订座";
 const bookBoxAndOrder ="提前选择菜品";
 const sessionID = "JSESSIONID";
 const restLotteryTime = "restLotteryTime";//剩余抽奖次数
+const hasWinLotteryBefore = "hasWinLotteryBefore";
 
-//const http_protocol = "https://";
-//const ws_protocol = "wss://"; 
-//const domain = 'www.qghls.com';
+// const http_protocol = "https://";
+// const ws_protocol = "wss://"; 
+// const domain = 'www.qghls.com';
 
 const userCode = 'mini-end';
 const pwd = 'q3d5#@5896';
@@ -37,5 +38,6 @@ module.exports = {
     ws_baseURL: ws_baseURL,
     userCode : userCode,
     pwd : pwd,
-    restLotteryTime: restLotteryTime
+    restLotteryTime: restLotteryTime,
+    hasWinLotteryBefore: hasWinLotteryBefore
 }
