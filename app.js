@@ -94,7 +94,7 @@ App({
     initLotteryInfo : function(){
         console.log(constant.restLotteryTime);
         let restLotteryTimes = wx.getStorageSync(constant.restLotteryTime);
-        if (restLotteryTimes == null || restLotteryTimes == 'undefined' || restLotteryTimes == ''){
+        if (restLotteryTimes === null || restLotteryTimes === 'undefined' || restLotteryTimes === ''){
             wx.setStorageSync(constant.restLotteryTime,1);
         }
         console.log(wx.getStorageSync(constant.restLotteryTime));
