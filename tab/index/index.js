@@ -47,7 +47,8 @@ Page({
         console.log(res);
         that.setData({
           deviceSize: {
-            height: ((res.windowHeight * (750 / res.windowWidth) - 193 - 121 - 254)) / 750 * res.windowWidth,
+            screenheight: res.screenHeight,
+            height: ((res.windowHeight * (750 / res.windowWidth) - 175 - 110 - 233)) / 750 * res.windowWidth,
             width: res.windowWidth + 1,
           }
         });

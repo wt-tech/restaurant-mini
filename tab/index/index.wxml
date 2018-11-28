@@ -108,7 +108,8 @@
     </view>
     <view class="divLine"></view>
   </view>
-  <view class="wt-company" style='width:{{deviceSize.width}}px;height:{{deviceSize.height}}px;line-height:{{deviceSize.height}}px'>万特科技 @小程序定制 18056339696</view>
+  <view wx:if="{{deviceSize.screenheight<=640}}" class="wt-company" style='width:{{deviceSize.width}}px;height:{{deviceSize.height}}px;vertical-align: middle;'>万特科技 @小程序定制 18056339696</view>
+  <view wx:if="{{deviceSize.screenheight>640}}" class="wt-company" style='width:{{deviceSize.width}}px;height:{{deviceSize.height}}px;line-height:{{deviceSize.height/7}}px;'>万特科技 @小程序定制 18056339696</view>
 </view>
 
 
@@ -133,4 +134,4 @@
     <image src='../../img/close-circle.jpg' style="width:80rpx;height:80rpx" bindtap='Closebutton'></image>
   </view>
 </view>
- <view class="bg" style="display:{{showView?'block':'none'}}" ></view>
+ <view class="bg" style="display:{{showLotteryView?'block':'none'}}" ></view>
