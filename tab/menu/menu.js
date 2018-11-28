@@ -145,21 +145,21 @@ Page({
       size.push({
         id: ++id,
         value: '大'+menu.unit,
-        price: '¥' + menu.largePrice + '元'
+        price:  menu.largePrice
       });
     }
     if (!!menu.mediumPrice) { //有值
       size.push({
         id: ++id,
         value: '中' + menu.unit,
-        price: '¥' + menu.mediumPrice + '元'
+        price: menu.mediumPrice
       });
     }
     if (!!menu.smallPrice) { //有值
       size.push({
         id: ++id,
         value: '小' + menu.unit,
-        price: '¥' + menu.smallPrice + '元'
+        price: menu.smallPrice
       });
     }
     if (!!menu.uncertainPrice) { //有值

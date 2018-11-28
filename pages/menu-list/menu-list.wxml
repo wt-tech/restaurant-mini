@@ -15,7 +15,7 @@
                 <image class="food-img" src="{{menu.menuimage[0].url}}"></image>
                 <view class="middle-area">
                     <view class="title">{{menu.name}}</view>
-                    <view class="discount-price">{{menu.selectedSize.price}}</view>
+                    <view class="discount-price">¥{{menu.selectedSize.price}}</view>
                     <view class="sales-volume">已售{{menu.salesVolume}}{{menu.unit}}</view>
                 </view>
                 <view class="right-area">

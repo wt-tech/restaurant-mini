@@ -1,164 +1,166 @@
 /* tab/index/index.wxss */
 
-.total-page{
-    /* position: fixed; */
-    height: 100%;
-    width: 100%;
+.total-page {
+   position: fixed; 
+  /* height: 100%; */
 
+  width: 100%;
+  height:100%;
 }
 
 swiper {
-    width: 100%;
-    height: 350rpx;
-    /* margin-bottom: 15rpx; */
+  width: 100%;
+  height: 350rpx;
+  /* margin-bottom: 15rpx; */
 }
 
 swiper image {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .function-area {
-    height: 220rpx;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: space-around;
-    flex-wrap: wrap;
-    /* margin-bottom: 15rpx; */
-    background-color: #eee;
+  height: 220rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: space-around;
+  flex-wrap: wrap;
+  /* margin-bottom: 15rpx; */
+  background-color: #eee;
 }
 
 .function {
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
-    align-items: center;
-    justify-content: space-around;
-    width: 370rpx;
-    height: 100rpx;
-    border-radius: 10rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-around;
+  width: 370rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    color: #555;
+  display: flex;
+  flex-direction: column;
+  color: #555;
 }
 
 .text .above {
-    font-size: 30rpx;
-    margin-bottom: 10rpx;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .text .below {
-    font-size: 20rpx;
-    color: #777;
+  font-size: 20rpx;
+  color: #777;
 }
 
 .icon {
-    width: 60rpx;
-    height: 60rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
-
-
 
 /* 餐馆信息 */
 
 .restaurant-info {
-    display: flex;
-    flex-direction: column;
-    width: 730rpx;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 730rpx;
+  margin: 0 auto;
 }
 
-.logo-row{
-    width: 750;
-    height : 180rpx;
-    /* display: flex;
+.logo-row {
+  width: 750;
+  height: 180rpx;
+  /* display: flex;
     flex-direction: row;
     justify-content: space-around;
     line-height: 200rpx;
     font-size: 32rpx;
     color: #777; */
 }
-.logo-row > image{
-    /* margin-top:15rpx; */
-    width: 740rpx;
-    height: 180rpx;
+
+.logo-row > image {
+  /* margin-top:15rpx; */
+  width: 740rpx;
+  height: 180rpx;
 }
 
 .row {
-    width: 100%;
-    height : 90rpx;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    line-height: 100rpx;
-    font-size: 32rpx;
-    color: #777;
-}
-.divLine{
-    background: #eee;
-    width: 100%;
-    height: 5rpx;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #777;
 }
 
-.r-left-area{
-    width: 60rpx;
+.divLine {
+  background: #eee;
+  width: 100%;
+  height: 5rpx;
 }
 
-.r-left-area > image{
-    margin-top:25rpx;
-    width: 50rpx;
-    height: 50rpx;
+.r-left-area {
+  width: 60rpx;
 }
 
-.r-middle-area{
-    width : 150rpx;
+.r-left-area > image {
+  margin-top: 25rpx;
+  width: 50rpx;
+  height: 50rpx;
 }
 
-.r-right-area{
-    width : 450rpx;
+.r-middle-area {
+  width: 150rpx;
 }
 
-.s-right-area{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.r-right-area {
+  width: 450rpx;
 }
 
-.vertical-function{
-    display: flex;
-    flex-direction: row;
+.s-right-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.vertical-boundary{
-    /* background: #ff6347; */
-    background: #eee;
-    width: 5rpx;
-    height: 100%;
-}
-.s-right-area  image{
-    margin-left: 15rpx;
-    margin-top:27rpx;
-    width: 50rpx;
-    height: 50rpx;
+.vertical-function {
+  display: flex;
+  flex-direction: row;
 }
 
-
-.lottery{
-    position: absolute;
-    left: 20rpx;
-    top: 100rpx;
+.vertical-boundary {
+  /* background: #ff6347; */
+  background: #eee;
+  width: 5rpx;
+  height: 100%;
 }
 
+.image1{
+  margin-left: 15rpx;
+  margin-top: 27rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.image2{
+  margin-left: 2rpx;
+  padding-left: 0;
+  margin-top: 27rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
 
 .container-out {
   height: 600rpx;
   width: 650rpx;
   background-color: red;
-  margin: 100rpx auto;
+  margin: 100rpx 0rpx auto;
   border-radius: 40rpx;
   box-shadow: 0 10px 0 rgba(248, 112, 88, 0.562);
   position: relative;
@@ -167,7 +169,7 @@ swiper image {
 .container-in {
   width: 580rpx;
   height: 530rpx;
-  background-color: #FF6347;
+  background-color: #ff6347;
   border-radius: 40rpx;
   position: absolute;
   left: 0;
@@ -194,7 +196,6 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   width: 166.6666rpx;
   background-color: #f5f0fc;
   border-radius: 15rpx;
-
 }
 
 /**居中 加粗*/
@@ -218,7 +219,6 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   line-height: 150rpx;
 }
 
-
 .start-btn2 {
   position: absolute;
   margin: auto;
@@ -238,7 +238,6 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   line-height: 150rpx;
 }
 
-
 .award-image {
   position: absolute;
   margin: auto;
@@ -248,4 +247,33 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   right: 0;
   height: 140rpx;
   width: 130rpx;
+}
+
+/* 浮层 */
+
+.bg {
+  /* display: none; */
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 999;
+  opacity: 0.4;
+}
+
+.lottery {
+  position: absolute;
+  left: 30rpx;
+  top: 100rpx;
+  display: block;
+  padding: 8px;
+  z-index: 1000;
+  overflow: auto;
+}
+
+.closebutton {
+  margin-top: 30rpx;
+  margin-left: 288rpx;
 }

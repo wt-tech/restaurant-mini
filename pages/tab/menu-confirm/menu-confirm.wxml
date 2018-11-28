@@ -16,7 +16,7 @@
             <view wx:if="{{menu.sizeList.length > 1}}" class="title">{{menu.selectedSize.value}}</view>
         </view>
         <view class="right-area">
-            <text>{{menu.selectedSize.price}} * </text>
+            <text>¥{{menu.selectedSize.price}} * </text>
             <text class="item-quantity">{{menu.count}} </text>
         </view>
     </view>

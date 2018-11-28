@@ -73,7 +73,7 @@
                 <view class="title">{{menu.name}}</view>
             </view>
             <view class="middle-area2">
-                <view class="title">{{menu.specifications}}</view>
+                <view class="title" wx:if="{{menu.specifications !=null}}">{{menu.specifications}}</view>
             </view>
             <view class="right-area">
                 <text>¥{{menu.choosePrice}} * </text>
